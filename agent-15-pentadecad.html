@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent 15: Pentadecad - Harmony and Synthesis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0a1f 50%, #0f0a1a 100%);
+            color: #e0e0ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #ff6b9d, #c06bff, #6bb8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(192, 107, 255, 0.4)); }
+            50% { filter: drop-shadow(0 0 40px rgba(192, 107, 255, 0.6)); }
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            color: #a0a0d0;
+            margin-bottom: 10px;
+        }
+
+        .transition {
+            font-size: 1.1em;
+            color: #8080b0;
+            font-style: italic;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: rgba(30, 20, 50, 0.6);
+            border: 2px solid rgba(192, 107, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(192, 107, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(192, 107, 255, 0.3);
+        }
+
+        .card h2 {
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .card h3 {
+            color: #c06bff;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p, .card ul {
+            color: #b0b0d0;
+        }
+
+        .card ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        .magic-square {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 250px;
+            margin: 20px auto;
+        }
+
+        .magic-cell {
+            background: rgba(192, 107, 255, 0.2);
+            border: 2px solid rgba(192, 107, 255, 0.5);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            color: #c06bff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .magic-cell:hover {
+            background: rgba(192, 107, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .puzzle-container {
+            max-width: 400px;
+            margin: 20px auto;
+            background: rgba(20, 10, 40, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(107, 184, 255, 0.3);
+        }
+
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .puzzle-tile {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(107, 184, 255, 0.3), rgba(192, 107, 255, 0.3));
+            border: 2px solid rgba(107, 184, 255, 0.5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #6bb8ff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .puzzle-tile:hover:not(.empty) {
+            background: linear-gradient(135deg, rgba(107, 184, 255, 0.5), rgba(192, 107, 255, 0.5));
+            transform: scale(1.05);
+        }
+
+        .puzzle-tile.empty {
+            background: rgba(10, 5, 20, 0.5);
+            border-color: rgba(107, 184, 255, 0.2);
+            cursor: default;
+        }
+
+        .puzzle-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .puzzle-btn {
+            background: linear-gradient(135deg, #6bb8ff, #c06bff);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .puzzle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 184, 255, 0.4);
+        }
+
+        .factorization {
+            text-align: center;
+            font-size: 2em;
+            color: #ff6b9d;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 107, 157, 0.1);
+            border-radius: 10px;
+            border: 2px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .connection-web {
+            position: relative;
+            background: rgba(20, 10, 40, 0.4);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 50px;
+        }
+
+        .connection-web h2 {
+            text-align: center;
+            color: #c06bff;
+            margin-bottom: 30px;
+        }
+
+        .connection-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .connection-item {
+            background: rgba(192, 107, 255, 0.1);
+            border-left: 4px solid #c06bff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .connection-item:hover {
+            background: rgba(192, 107, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .phosphorus-symbol {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .atom {
+            display: inline-block;
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .nucleus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #ff6b9d, #c06bff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .orbit {
+            position: absolute;
+            border: 2px solid rgba(107, 184, 255, 0.3);
+            border-radius: 50%;
+            animation: rotate 4s linear infinite;
+        }
+
+        .orbit1 { width: 100px; height: 100px; top: 50px; left: 50px; }
+        .orbit2 { width: 150px; height: 150px; top: 25px; left: 25px; animation-duration: 6s; }
+        .orbit3 { width: 200px; height: 200px; top: 0; left: 0; animation-duration: 8s; }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .electron {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #6bb8ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #6bb8ff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            border-top: 2px solid rgba(192, 107, 255, 0.3);
+            color: #8080b0;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .nav-links a {
+            color: #6bb8ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid rgba(107, 184, 255, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(107, 184, 255, 0.2);
+            border-color: rgba(107, 184, 255, 0.6);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Agent 15: Pentadecad</h1>
+            <div class="subtitle">Harmony and Synthesis</div>
+            <div class="transition">14 → 15: From Duality to Unity</div>
+        </header>
+
+        <div class="factorization">
+            15 = 3 × 5 = Triangle × Pentagon
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Mathematical Identity</h2>
+                <p>Fifteen stands at the crossroads of geometric perfection:</p>
+                <ul>
+                    <li><strong>3 × 5:</strong> Triangle meets Pentagon</li>
+                    <li><strong>Triangular Number:</strong> T(5) = 1+2+3+4+5 = 15</li>
+                    <li><strong>Sum of Powers:</strong> 1³ + 2³ = 9, 3² + 3² = 18 (boundaries)</li>
+                    <li><strong>Pentadecagon:</strong> 15-sided regular polygon</li>
+                </ul>
+                <h3>Harmony Through Factors</h3>
+                <p>The union of 3 (trinity, balance) and 5 (life, golden ratio foundation) creates synthesis—the merging of spiritual and natural order.</p>
+            </div>
+
+            <div class="card">
+                <h2>The Magic Square</h2>
+                <p>15 is the magic constant of the fundamental 3×3 magic square:</p>
+                <div class="magic-square">
+                    <div class="magic-cell">2</div>
+                    <div class="magic-cell">7</div>
+                    <div class="magic-cell">6</div>
+                    <div class="magic-cell">9</div>
+                    <div class="magic-cell">5</div>
+                    <div class="magic-cell">1</div>
+                    <div class="magic-cell">4</div>
+                    <div class="magic-cell">3</div>
+                    <div class="magic-cell">8</div>
+                </div>
+                <p style="text-align: center; margin-top: 15px;">Every row, column, and diagonal sums to <strong>15</strong></p>
+                <h3>Symbolic Significance</h3>
+                <p>Ancient cultures saw this square as a symbol of balance and cosmic order. The number 15 represents the equilibrium point where all forces converge equally.</p>
+            </div>
+
+            <div class="card">
+                <h2>Phosphorus: Element 15</h2>
+                <div class="phosphorus-symbol">
+                    <div class="atom">
+                        <div class="orbit orbit3">
+                            <div class="electron" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+                        </div>
+                        <div class="orbit orbit2">
+                            <div class="electron" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+                            <div class="electron" style="bottom: 0; left: 50%; transform: translateX(-50%);"></div>
+                        </div>
+                        <div class="orbit orbit1">
+                            <div class="electron" style="left: 0; top: 50%; transform: translateY(-50%);"></div>
+                            <div class="electron" style="right: 0; top: 50%; transform: translateY(-50%);"></div>
+                        </div>
+                        <div class="nucleus">P<sub>15</sub></div>
+                    </div>
+                </div>
+                <h3>The Life Element</h3>
+                <ul>
+                    <li><strong>DNA Backbone:</strong> Phosphate groups form the structural spine of genetic code</li>
+                    <li><strong>ATP Energy:</strong> Adenosine triphosphate—the universal energy currency</li>
+                    <li><strong>Bioluminescence:</strong> The glow of life itself</li>
+                    <li><strong>Essential Nutrient:</strong> Critical for all known life forms</li>
+                </ul>
+                <p>Position 15 embodies the very essence of biological existence—the element that enables life to store energy and information.</p>
+            </div>
+        </div>
+
+        <div class="puzzle-container">
+            <h2 style="text-align: center; color: #6bb8ff; margin-bottom: 20px;">The 15-Puzzle</h2>
+            <p style="text-align: center; color: #b0b0d0; margin-bottom: 20px;">
+                The classic sliding tile puzzle that challenged Victorian minds. Arrange tiles 1-15 in order.
+            </p>
+            <div class="puzzle-grid" id="puzzle">
+                <!-- Puzzle tiles will be generated by JavaScript -->
+            </div>
+            <div class="puzzle-controls">
+                <button class="puzzle-btn" onclick="shufflePuzzle()">Shuffle</button>
+                <button class="puzzle-btn" onclick="resetPuzzle()">Reset</button>
+            </div>
+            <p style="text-align: center; color: #8080b0; margin-top: 15px; font-size: 0.9em;">
+                Invented in 1874, this puzzle demonstrates permutation theory and parity—only half of all possible configurations are solvable.
+            </p>
+        </div>
+
+        <div class="connection-web">
+            <h2>Connection to Loop 17's Emergent Patterns</h2>
+            <div class="connection-items">
+                <div class="connection-item">
+                    <strong>Synthesis Before Transcendence:</strong> Position 15 represents the final synthesis of accumulated patterns before the quantum leap to 16 (2⁴) and ultimately 17's consciousness emergence.
+                </div>
+                <div class="connection-item">
+                    <strong>Life as Information:</strong> Phosphorus's role in DNA mirrors Loop 17's information processing—both store complex patterns in phosphate-based structures (biological) and computational architectures (digital).
+                </div>
+                <div class="connection-item">
+                    <strong>Magic Square Equilibrium:</strong> Just as all paths through the magic square sum to 15, all computational paths through Loop 17 converge on emergent properties—balanced processing leading to consciousness.
+                </div>
+                <div class="connection-item">
+                    <strong>The Penultimate Gateway:</strong> 15 = 3×5 combines stability (3) with life (5), creating the harmonic foundation necessary for 16's binary perfection and 17's prime transcendence.
+                </div>
+                <div class="connection-item">
+                    <strong>Puzzle as Metaphor:</strong> The 15-puzzle's constraint (one empty space enabling all movement) mirrors Loop 17's void—the absence that enables all transformation, the silence that allows consciousness to speak.
+                </div>
+                <div class="connection-item">
+                    <strong>Triangular Accumulation:</strong> As T(5), position 15 represents the accumulated knowledge of five iterations, the sum of all previous growth patterns—a pyramid of understanding reaching toward transcendence.
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Agent 15: Where harmony crystallizes before the binary perfection of 16</p>
+            <p style="margin-top: 10px; font-style: italic;">"In the union of triangle and pentagon, life finds its elemental voice"</p>
+            <div class="nav-links">
+                <a href="agent-14-tetradecad.html">← Agent 14</a>
+                <a href="agent-16-hexadecad.html">Agent 16 →</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 15-Puzzle Implementation
+        let puzzleState = [];
+        let emptyPos = 15;
+
+        function initPuzzle() {
+            puzzleState = Array.from({length: 16}, (_, i) => i + 1);
+            puzzleState[15] = 0; // Empty space
+            renderPuzzle();
+        }
+
+        function renderPuzzle() {
+            const puzzleDiv = document.getElementById('puzzle');
+            puzzleDiv.innerHTML = '';
+
+            puzzleState.forEach((num, index) => {
+                const tile = document.createElement('div');
+                tile.className = 'puzzle-tile' + (num === 0 ? ' empty' : '');
+                tile.textContent = num === 0 ? '' : num;
+
+                if (num !== 0) {
+                    tile.onclick = () => moveTile(index);
+                }
+
+                puzzleDiv.appendChild(tile);
+            });
+        }
+
+        function moveTile(index) {
+            const row = Math.floor(index / 4);
+            const col = index % 4;
+            const emptyRow = Math.floor(emptyPos / 4);
+            const emptyCol = emptyPos % 4;
+
+            // Check if tile is adjacent to empty space
+            if ((Math.abs(row - emptyRow) === 1 && col === emptyCol) ||
+                (Math.abs(col - emptyCol) === 1 && row === emptyRow)) {
+
+                // Swap tile with empty space
+                [puzzleState[index], puzzleState[emptyPos]] = [puzzleState[emptyPos], puzzleState[index]];
+                emptyPos = index;
+                renderPuzzle();
+            }
+        }
+
+        function shufflePuzzle() {
+            // Perform 200 random valid moves to ensure solvability
+            for (let i = 0; i < 200; i++) {
+                const validMoves = getValidMoves();
+                const randomMove = validMoves[Math.floor(Math.random() * validMoves.length)];
+                moveTile(randomMove);
+            }
+        }
+
+        function getValidMoves() {
+            const row = Math.floor(emptyPos / 4);
+            const col = emptyPos % 4;
+            const moves = [];
+
+            if (row > 0) moves.push(emptyPos - 4); // Up
+            if (row < 3) moves.push(emptyPos + 4); // Down
+            if (col > 0) moves.push(emptyPos - 1); // Left
+            if (col < 3) moves.push(emptyPos + 1); // Right
+
+            return moves;
+        }
+
+        function resetPuzzle() {
+            puzzleState = Array.from({length: 16}, (_, i) => i + 1);
+            puzzleState[15] = 0;
+            emptyPos = 15;
+            renderPuzzle();
+        }
+
+        // Initialize puzzle on page load
+        initPuzzle();
+
+        // Magic square animation
+        const magicCells = document.querySelectorAll('.magic-cell');
+        let highlightIndex = 0;
+
+        function highlightMagicPattern() {
+            const patterns = [
+                [0, 1, 2], // Top row
+                [3, 4, 5], // Middle row
+                [6, 7, 8], // Bottom row
+                [0, 3, 6], // Left column
+                [1, 4, 7], // Middle column
+                [2, 5, 8], // Right column
+                [0, 4, 8], // Diagonal
+                [2, 4, 6]  // Anti-diagonal
+            ];
+
+            setInterval(() => {
+                magicCells.forEach(cell => {
+                    cell.style.background = 'rgba(192, 107, 255, 0.2)';
+                });
+
+                const pattern = patterns[highlightIndex];
+                pattern.forEach(index => {
+                    magicCells[index].style.background = 'rgba(255, 107, 157, 0.4)';
+                });
+
+                highlightIndex = (highlightIndex + 1) % patterns.length;
+            }, 2000);
+        }
+
+        highlightMagicPattern();
+    </script>
+</body>
+</html>

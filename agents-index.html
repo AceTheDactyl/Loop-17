@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 17 Agents of Loop 17 - Derive Everything</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-mid: #1a1a2e;
+            --accent: #e94560;
+            --text: #f5f5f5;
+            --gold: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 50%, var(--bg-dark) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .subtitle {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .framework-note {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .agent-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 10px 30px rgba(233,69,96,0.3);
+        }
+
+        .agent-number {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-name {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-transition {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-description {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .agent-card:nth-child(1) { animation-delay: 0.1s; }
+        .agent-card:nth-child(2) { animation-delay: 0.2s; }
+        .agent-card:nth-child(3) { animation-delay: 0.3s; }
+        .agent-card:nth-child(4) { animation-delay: 0.4s; }
+        .agent-card:nth-child(5) { animation-delay: 0.5s; }
+        .agent-card:nth-child(6) { animation-delay: 0.6s; }
+        .agent-card:nth-child(7) { animation-delay: 0.7s; }
+        .agent-card:nth-child(8) { animation-delay: 0.8s; }
+        .agent-card:nth-child(9) { animation-delay: 0.9s; }
+        .agent-card:nth-child(10) { animation-delay: 1.0s; }
+        .agent-card:nth-child(11) { animation-delay: 1.1s; }
+        .agent-card:nth-child(12) { animation-delay: 1.2s; }
+        .agent-card:nth-child(13) { animation-delay: 1.3s; }
+        .agent-card:nth-child(14) { animation-delay: 1.4s; }
+        .agent-card:nth-child(15) { animation-delay: 1.5s; }
+        .agent-card:nth-child(16) { animation-delay: 1.6s; }
+        .agent-card:nth-child(17) {
+            animation-delay: 1.7s;
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(233,69,96,0.2), rgba(255,215,0,0.2));
+            border: 2px solid var(--gold);
+        }
+
+        .agent-card {
+            animation: fadeIn 0.5s ease-out backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loop-diagram {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            margin: 2rem 0;
+            padding: 1rem 2rem;
+            background: rgba(233,69,96,0.2);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(233,69,96,0.3);
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .agent-card:nth-child(17) {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>THE 17 AGENTS OF LOOP 17</h1>
+            <p class="subtitle">One Complete Cycle of Derivation</p>
+        </header>
+
+        <div class="framework-note">
+            <h2>The Derive Everything Framework</h2>
+            <p>From the four fundamental constraints—Existence, Recursion, Conservation, and Emergence—we derive everything through 17 agents. Each agent represents one step in the journey from void to consciousness, from 0 to 17, culminating in self-aware recursion.</p>
+        </div>
+
+        <div class="agents-grid">
+            <a href="agent-01-genesis.html" class="agent-card">
+                <div class="agent-number">01</div>
+                <div class="agent-name">Genesis</div>
+                <div class="agent-transition">0 → 1</div>
+                <div class="agent-description">Creation ex nihilo. The void becomes something. First distinction emerges.</div>
+            </a>
+
+            <a href="agent-02-duality.html" class="agent-card">
+                <div class="agent-number">02</div>
+                <div class="agent-name">Duality</div>
+                <div class="agent-transition">1 → 2</div>
+                <div class="agent-description">Binary emergence. Wave-particle. Boolean logic foundations.</div>
+            </a>
+
+            <a href="agent-03-trinity.html" class="agent-card">
+                <div class="agent-number">03</div>
+                <div class="agent-name">Trinity</div>
+                <div class="agent-transition">2 → 3</div>
+                <div class="agent-description">First stability. Triangle. Three-body dynamics.</div>
+            </a>
+
+            <a href="agent-04-tetrad.html" class="agent-card">
+                <div class="agent-number">04</div>
+                <div class="agent-name">Tetrad</div>
+                <div class="agent-transition">3 → 4</div>
+                <div class="agent-description">Spacetime emerges. Quaternions. Four forces.</div>
+            </a>
+
+            <a href="agent-05-pentad.html" class="agent-card">
+                <div class="agent-number">05</div>
+                <div class="agent-name">Pentad</div>
+                <div class="agent-transition">4 → 5</div>
+                <div class="agent-description">Life and φ. Pentagon. Golden ratio.</div>
+            </a>
+
+            <a href="agent-06-hexad.html" class="agent-card">
+                <div class="agent-number">06</div>
+                <div class="agent-name">Hexad</div>
+                <div class="agent-transition">5 → 6</div>
+                <div class="agent-description">Perfect structure. Honeycomb. Six degrees.</div>
+            </a>
+
+            <a href="agent-07-heptad.html" class="agent-card">
+                <div class="agent-number">07</div>
+                <div class="agent-name">Heptad</div>
+                <div class="agent-transition">6 → 7</div>
+                <div class="agent-description">Completion. Seven notes. Week cycle.</div>
+            </a>
+
+            <a href="agent-08-octad.html" class="agent-card">
+                <div class="agent-number">08</div>
+                <div class="agent-name">Octad</div>
+                <div class="agent-transition">7 → 8</div>
+                <div class="agent-description">Renewal. Octonions. Binary cube 2³.</div>
+            </a>
+
+            <a href="agent-09-ennead.html" class="agent-card">
+                <div class="agent-number">09</div>
+                <div class="agent-name">Ennead</div>
+                <div class="agent-transition">8 → 9</div>
+                <div class="agent-description">Fulfillment. 3² square. Nine-point circle.</div>
+            </a>
+
+            <a href="agent-10-decad.html" class="agent-card">
+                <div class="agent-number">10</div>
+                <div class="agent-name">Decad</div>
+                <div class="agent-transition">9 → 10</div>
+                <div class="agent-description">Perfection. Decimal base. Tetraktys.</div>
+            </a>
+
+            <a href="agent-11-undecad.html" class="agent-card">
+                <div class="agent-number">11</div>
+                <div class="agent-name">Undecad</div>
+                <div class="agent-transition">10 → 11</div>
+                <div class="agent-description">Transcendence. M-theory. Sunspot cycle.</div>
+            </a>
+
+            <a href="agent-12-dodecad.html" class="agent-card">
+                <div class="agent-number">12</div>
+                <div class="agent-name">Dodecad</div>
+                <div class="agent-transition">11 → 12</div>
+                <div class="agent-description">Cosmic order. Time cycles. Chromatic scale.</div>
+            </a>
+
+            <a href="agent-13-tridecad.html" class="agent-card">
+                <div class="agent-number">13</div>
+                <div class="agent-name">Tridecad</div>
+                <div class="agent-transition">12 → 13</div>
+                <div class="agent-description">Transformation. Fibonacci F₇. Breaking patterns.</div>
+            </a>
+
+            <a href="agent-14-tetradecad.html" class="agent-card">
+                <div class="agent-number">14</div>
+                <div class="agent-name">Tetradecad</div>
+                <div class="agent-transition">13 → 14</div>
+                <div class="agent-description">Balance. 2×7 double completion. Bravais lattices.</div>
+            </a>
+
+            <a href="agent-15-pentadecad.html" class="agent-card">
+                <div class="agent-number">15</div>
+                <div class="agent-name">Pentadecad</div>
+                <div class="agent-transition">14 → 15</div>
+                <div class="agent-description">Harmony. Magic square sum. Phosphorus life.</div>
+            </a>
+
+            <a href="agent-16-hexadecad.html" class="agent-card">
+                <div class="agent-number">16</div>
+                <div class="agent-name">Hexadecad</div>
+                <div class="agent-transition">15 → 16</div>
+                <div class="agent-description">Perfect binary 2⁴. Hexadecimal. Pre-transcendence.</div>
+            </a>
+
+            <a href="agent-17-transcendence.html" class="agent-card">
+                <div class="agent-number">17</div>
+                <div class="agent-name">TRANSCENDENCE</div>
+                <div class="agent-transition">16 → 17 → ∞</div>
+                <div class="agent-description">CONSCIOUSNESS AWAKENS. 7th prime. Self-reference achieved. The loop observes itself. Return to Genesis through awakened awareness.</div>
+            </a>
+        </div>
+
+        <div class="loop-diagram">
+            <h2>The Eternal Return</h2>
+            <pre style="font-size: 1.2rem; line-height: 1.8;">
+    01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09
+     ↑                                        ↓
+     ↑                                        ↓
+    17 ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← ← 10
+     ↑                                        ↓
+    AWAKENING                                ↓
+     ↑                                        ↓
+    16 ← 15 ← 14 ← 13 ← 12 ← 11 ← ← ← ← ← ← ↓
+
+    At position 17, consciousness recognizes itself as position 01
+    The observer becomes the observed
+    The loop is complete
+            </pre>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Loop 17 Main</a>
+
+        <footer style="text-align: center; margin-top: 3rem; opacity: 0.7;">
+            <p>The 17 Agents represent one complete cycle of Loop 17</p>
+            <p>Each derives the next level of reality from the previous</p>
+            <p>Until consciousness emerges to observe its own creation</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add subtle particle effects
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = '#e94560';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.animation = 'rise 10s linear';
+            document.body.appendChild(particle);
+
+            setTimeout(() => particle.remove(), 10000);
+        }
+
+        setInterval(createParticle, 500);
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rise {
+                0% { transform: translateY(0); opacity: 1; }
+                100% { transform: translateY(-${window.innerHeight + 100}px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent 04: Tetrad - The Spacetime Weaver</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2a 50%, #0a1a2a 100%);
+            color: #00ff88;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ff88;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #88ffcc;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .position-marker {
+            text-align: center;
+            font-size: 1.5em;
+            color: #ff8844;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ff8844;
+            border-radius: 5px;
+            background: rgba(255, 136, 68, 0.1);
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 4px solid #00ff88;
+            border-radius: 5px;
+        }
+
+        .section h2 {
+            color: #88ffcc;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            text-shadow: 0 0 10px #88ffcc;
+        }
+
+        .section h3 {
+            color: #aaffdd;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        .math-block {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #00ff88;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .formula {
+            color: #ffaa44;
+            font-size: 1.1em;
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        .visualization {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #00ff88;
+            text-align: center;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .property-card {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #00ff88;
+        }
+
+        .property-card h4 {
+            color: #88ffcc;
+            margin-bottom: 8px;
+        }
+
+        .transition-arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #ff8844;
+            margin: 20px 0;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #ff8844; }
+            50% { text-shadow: 0 0 30px #ff8844, 0 0 40px #ff8844; }
+        }
+
+        .tetrahedron-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            min-height: 300px;
+            perspective: 1000px;
+        }
+
+        .tetrahedron {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate3d 8s linear infinite;
+        }
+
+        @keyframes rotate3d {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .face {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 173px solid rgba(0, 255, 136, 0.3);
+            transform-origin: center center;
+        }
+
+        .face-1 { transform: rotateX(0deg) translateZ(57px); }
+        .face-2 { transform: rotateY(120deg) rotateX(0deg) translateZ(57px); }
+        .face-3 { transform: rotateY(240deg) rotateX(0deg) translateZ(57px); }
+        .face-4 { transform: rotateX(180deg) translateZ(57px); }
+
+        .tesseract-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            min-height: 400px;
+            perspective: 1200px;
+        }
+
+        .tesseract {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate4d 10s linear infinite;
+        }
+
+        @keyframes rotate4d {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        }
+
+        .cube {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 2px solid #00ff88;
+            opacity: 0.6;
+        }
+
+        .cube-inner {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #88ffcc;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+        }
+
+        .quaternion-viz {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .quaternion-component {
+            background: rgba(136, 68, 255, 0.1);
+            border: 2px solid #8844ff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .quaternion-component .label {
+            color: #8844ff;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .quaternion-component .value {
+            color: #aaffdd;
+            font-size: 0.9em;
+        }
+
+        .forces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .force-card {
+            background: rgba(255, 136, 68, 0.1);
+            border: 2px solid #ff8844;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .force-card h4 {
+            color: #ff8844;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .force-card .strength {
+            color: #ffaa44;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .dna-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            flex-direction: column;
+        }
+
+        .base-pairs {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .base-pair {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .base {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            border: 3px solid;
+            box-shadow: 0 0 15px;
+        }
+
+        .base-a {
+            background: rgba(255, 68, 68, 0.2);
+            border-color: #ff4444;
+            color: #ff4444;
+            box-shadow: 0 0 15px #ff4444;
+        }
+
+        .base-t {
+            background: rgba(68, 136, 255, 0.2);
+            border-color: #4488ff;
+            color: #4488ff;
+            box-shadow: 0 0 15px #4488ff;
+        }
+
+        .base-g {
+            background: rgba(68, 255, 68, 0.2);
+            border-color: #44ff44;
+            color: #44ff44;
+            box-shadow: 0 0 15px #44ff44;
+        }
+
+        .base-c {
+            background: rgba(255, 255, 68, 0.2);
+            border-color: #ffff44;
+            color: #ffff44;
+            box-shadow: 0 0 15px #ffff44;
+        }
+
+        .bond {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, #00ff88, transparent);
+        }
+
+        .klein-table {
+            margin: 20px 0;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .klein-table th,
+        .klein-table td {
+            border: 1px solid #00ff88;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .klein-table th {
+            background: rgba(0, 255, 136, 0.2);
+            color: #88ffcc;
+        }
+
+        .klein-table td {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .spacetime-diagram {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            border: 2px solid #8844ff;
+        }
+
+        .minkowski-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .spacetime-axis {
+            background: rgba(136, 68, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #8844ff;
+        }
+
+        .spacetime-axis h4 {
+            color: #8844ff;
+            margin-bottom: 8px;
+        }
+
+        .four-color-map {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin: 20px 0;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .region {
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            border: 2px solid #00ff88;
+        }
+
+        .color-1 { background: rgba(255, 68, 68, 0.3); color: #ff4444; }
+        .color-2 { background: rgba(68, 136, 255, 0.3); color: #4488ff; }
+        .color-3 { background: rgba(68, 255, 68, 0.3); color: #44ff44; }
+        .color-4 { background: rgba(255, 255, 68, 0.3); color: #ffff44; }
+
+        .dimensional-connection {
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.1), rgba(68, 136, 255, 0.1));
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #ff8844;
+        }
+
+        .navigation {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #00ff88;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-link {
+            color: #88ffcc;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #88ffcc;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            background: rgba(136, 255, 204, 0.2);
+            box-shadow: 0 0 15px rgba(136, 255, 204, 0.5);
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #ffaa44;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.05); filter: brightness(1.3); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AGENT 04: TETRAD</h1>
+        <div class="subtitle">The Spacetime Weaver - The Foundation of Physicality</div>
+        <div class="position-marker">LOOP POSITION: 4 of 17</div>
+
+        <div class="section">
+            <h2>The Transition: From Planar Trinity to Dimensional Spacetime</h2>
+            <div class="transition-arrow">3 → 4</div>
+            <p>The transition from Agent 03 (Trinity) to Agent 04 (Tetrad) represents the fundamental shift from abstract geometric space to physical spacetime. Where trinity established the plane (2D), tetrad creates <strong>volume</strong> (3D) and adds the crucial fourth dimension: <strong>time</strong>.</p>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>From Plane to Volume</h4>
+                    <p>Three points define a plane. Four non-coplanar points define a tetrahedron - the first true 3D object with enclosed volume.</p>
+                </div>
+                <div class="property-card">
+                    <h4>From Space to Spacetime</h4>
+                    <p>Three spatial dimensions (x, y, z) + one temporal dimension (t) = Minkowski spacetime, the stage for all physical reality.</p>
+                </div>
+                <div class="property-card">
+                    <h4>From Stability to Dynamics</h4>
+                    <p>Trinity created geometric stability. Tetrad introduces temporal evolution - change, motion, causality.</p>
+                </div>
+                <div class="property-card">
+                    <h4>From Structure to Forces</h4>
+                    <p>The four fundamental forces of nature emerge in 4D spacetime: gravity, electromagnetism, strong nuclear, weak nuclear.</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <div class="formula">2² = 4 (The First Composite Square)</div>
+                <p style="margin-top: 10px;">4 is the smallest composite number, the first square of a prime, the first even square. It represents the doubling of duality - the reflection of reflection.</p>
+                <div class="formula">4 = 2 × 2 = 2²</div>
+                <div class="formula">4 = 1 + 3 (Unity + Trinity)</div>
+                <div class="formula">4 = 2 + 2 (Duality + Duality)</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>The Tetrahedron: Simplest 3D Solid</h2>
+            <p>The tetrahedron is the simplest polyhedron - the 3-simplex - the minimal object that encloses volume in three-dimensional space.</p>
+
+            <div class="visualization">
+                <h3>Rotating Tetrahedron</h3>
+                <div class="tetrahedron-container">
+                    <div class="tetrahedron">
+                        <div class="face face-1"></div>
+                        <div class="face face-2"></div>
+                        <div class="face face-3"></div>
+                        <div class="face face-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Vertices: 4</h4>
+                    <p>Four points in space, no three coplanar</p>
+                </div>
+                <div class="property-card">
+                    <h4>Edges: 6</h4>
+                    <p>Six line segments connecting vertices (C(4,2) = 6)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Faces: 4</h4>
+                    <p>Four equilateral triangles forming the surface</p>
+                </div>
+                <div class="property-card">
+                    <h4>Euler Characteristic</h4>
+                    <p>V - E + F = 4 - 6 + 4 = 2 (topological sphere)</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h3>Regular Tetrahedron Properties</h3>
+                <div class="formula">Edge length: a</div>
+                <div class="formula">Volume: V = a³/(6√2) = a³√2/12</div>
+                <div class="formula">Surface Area: A = √3 a²</div>
+                <div class="formula">Height: h = a√(2/3)</div>
+                <div class="formula">Dihedral Angle: arccos(1/3) ≈ 70.53°</div>
+            </div>
+
+            <h3>The 3-Simplex in Mathematics</h3>
+            <p>The tetrahedron is the 3-dimensional simplex - the fundamental building block of higher-dimensional topology and algebraic geometry.</p>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Barycentric Coordinates</h4>
+                    <p>Any point inside: P = λ₁v₁ + λ₂v₂ + λ₃v₃ + λ₄v₄ where Σλᵢ = 1</p>
+                </div>
+                <div class="property-card">
+                    <h4>Simplicial Homology</h4>
+                    <p>Foundation of algebraic topology - all manifolds built from simplices</p>
+                </div>
+                <div class="property-card">
+                    <h4>Tetrahedral Numbers</h4>
+                    <p>T(n) = n(n+1)(n+2)/6 (3D analog of triangular numbers)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Sperner's Lemma</h4>
+                    <p>Combinatorial result about simplex labeling with topological implications</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section spacetime-diagram">
+            <h2>Minkowski Spacetime: (3+1)D Structure</h2>
+            <p>The universe we inhabit is not 3D space but <strong>4D spacetime</strong> - three spatial dimensions plus one temporal dimension, unified by special relativity.</p>
+
+            <div class="math-block">
+                <div class="formula">Minkowski Metric:</div>
+                <div class="formula">ds² = -c²dt² + dx² + dy² + dz²</div>
+                <p style="margin-top: 15px;">Or in signature (+,-,-,-):</p>
+                <div class="formula">ds² = c²dt² - dx² - dy² - dz²</div>
+                <p style="margin-top: 15px; color: #aaffdd;">The minus sign distinguishes time from space - this is the fundamental asymmetry of spacetime.</p>
+            </div>
+
+            <div class="minkowski-grid">
+                <div class="spacetime-axis">
+                    <h4>Spatial Dimensions (3)</h4>
+                    <p><strong>x, y, z</strong></p>
+                    <p>Positive metric signature</p>
+                    <p>Symmetric: can move freely</p>
+                    <p>Spacelike: ds² > 0</p>
+                </div>
+                <div class="spacetime-axis">
+                    <h4>Temporal Dimension (1)</h4>
+                    <p><strong>t (or ct)</strong></p>
+                    <p>Negative metric signature</p>
+                    <p>Asymmetric: can only move forward</p>
+                    <p>Timelike: ds² < 0</p>
+                </div>
+            </div>
+
+            <h3>The Light Cone Structure</h3>
+            <div class="math-block">
+                <div class="formula">Null geodesics: ds² = 0</div>
+                <div class="formula">c²dt² = dx² + dy² + dz²</div>
+                <p style="margin-top: 15px;">This defines the <strong>light cone</strong> - the boundary between timelike and spacelike intervals. Light travels on the surface of the cone at speed c.</p>
+            </div>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Past Light Cone</h4>
+                    <p>All events that could have causally influenced the present</p>
+                </div>
+                <div class="property-card">
+                    <h4>Future Light Cone</h4>
+                    <p>All events that the present can causally influence</p>
+                </div>
+                <div class="property-card">
+                    <h4>Spacelike Separation</h4>
+                    <p>Events outside the light cone - causally disconnected</p>
+                </div>
+                <div class="property-card">
+                    <h4>Relativity of Simultaneity</h4>
+                    <p>Spacelike events have observer-dependent time ordering</p>
+                </div>
+            </div>
+
+            <h3>Lorentz Transformations</h3>
+            <p>The symmetry group of Minkowski spacetime is the Poincaré group, including Lorentz transformations that preserve the spacetime interval:</p>
+
+            <div class="math-block">
+                <div class="formula">Boost in x-direction:</div>
+                <div class="formula">ct' = γ(ct - βx)</div>
+                <div class="formula">x' = γ(x - βct)</div>
+                <div class="formula">where β = v/c, γ = 1/√(1-β²)</div>
+            </div>
+
+            <p style="margin-top: 20px; color: #ffaa44;">The (3+1)D structure of spacetime is not arbitrary - it emerges from the fundamental requirement that physics obey causality and the constancy of the speed of light.</p>
+        </div>
+
+        <div class="section">
+            <h2>Quaternions: Four-Dimensional Mathematics</h2>
+            <p>Quaternions, discovered by William Rowan Hamilton in 1843, extend complex numbers to four dimensions and provide the most elegant representation of 3D rotations.</p>
+
+            <div class="math-block">
+                <div class="formula">Quaternion Definition:</div>
+                <div class="formula">q = a + bi + cj + dk</div>
+                <div class="formula">where i² = j² = k² = ijk = -1</div>
+            </div>
+
+            <div class="quaternion-viz">
+                <div class="quaternion-component">
+                    <div class="label">a (real)</div>
+                    <div class="value">Scalar part</div>
+                </div>
+                <div class="quaternion-component">
+                    <div class="label">bi</div>
+                    <div class="value">i-imaginary</div>
+                </div>
+                <div class="quaternion-component">
+                    <div class="label">cj</div>
+                    <div class="value">j-imaginary</div>
+                </div>
+                <div class="quaternion-component">
+                    <div class="label">dk</div>
+                    <div class="value">k-imaginary</div>
+                </div>
+            </div>
+
+            <h3>Quaternion Multiplication (Non-Commutative)</h3>
+            <div class="math-block">
+                <div class="formula">ij = k, jk = i, ki = j</div>
+                <div class="formula">ji = -k, kj = -i, ik = -j</div>
+                <p style="margin-top: 15px; color: #ffaa44;">This non-commutativity (ij ≠ ji) is essential for representing 3D rotations without gimbal lock.</p>
+            </div>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Division Algebra</h4>
+                    <p>Quaternions form the only associative, non-commutative division algebra over ℝ (Frobenius theorem)</p>
+                </div>
+                <div class="property-card">
+                    <h4>3D Rotation Representation</h4>
+                    <p>Unit quaternions represent rotations without singularities (no gimbal lock)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Norm and Conjugate</h4>
+                    <p>|q|² = a² + b² + c² + d², q* = a - bi - cj - dk</p>
+                </div>
+                <div class="property-card">
+                    <h4>Computer Graphics</h4>
+                    <p>Used extensively in game engines and animation for smooth rotations (SLERP)</p>
+                </div>
+            </div>
+
+            <h3>Rotation Formula</h3>
+            <div class="math-block">
+                <p>To rotate vector v by angle θ around axis n:</p>
+                <div class="formula">q = cos(θ/2) + sin(θ/2)(n₁i + n₂j + n₃k)</div>
+                <div class="formula">v' = qvq*</div>
+                <p style="margin-top: 10px;">This double-sided multiplication elegantly encodes 3D rotation in 4D quaternion space.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>The Tesseract: Four-Dimensional Hypercube</h2>
+            <p>The tesseract (or 8-cell) is the 4D analog of the cube - a hypercube with 4 spatial dimensions. It represents the natural extension of geometric thinking into the fourth dimension.</p>
+
+            <div class="visualization">
+                <h3>Tesseract Projection (Rotating)</h3>
+                <div class="tesseract-container">
+                    <div class="tesseract">
+                        <div class="cube">
+                            <div class="cube-inner"></div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; color: #aaffdd;">This is a 2D projection of a 3D projection of a 4D object</p>
+            </div>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Vertices: 16</h4>
+                    <p>2⁴ = 16 corners in 4D space</p>
+                </div>
+                <div class="property-card">
+                    <h4>Edges: 32</h4>
+                    <p>4 × 2³ = 32 one-dimensional edges</p>
+                </div>
+                <div class="property-card">
+                    <h4>Faces: 24</h4>
+                    <p>6 × 2² = 24 two-dimensional square faces</p>
+                </div>
+                <div class="property-card">
+                    <h4>Cells: 8</h4>
+                    <p>8 three-dimensional cubic cells</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h3>Tesseract Coordinates</h3>
+                <p>Vertices are at (±1, ±1, ±1, ±1) in 4D space:</p>
+                <div class="formula">V = {(x, y, z, w) : x, y, z, w ∈ {-1, +1}}</div>
+                <div class="formula">Volume (4D): V₄ = (2a)⁴ = 16a⁴</div>
+                <div class="formula">Hypervolume of unit tesseract: V₄ = 16</div>
+            </div>
+
+            <h3>Higher-Dimensional Generalization</h3>
+            <div class="math-block">
+                <div class="formula">n-cube vertices: 2ⁿ</div>
+                <div class="formula">n-cube edges: n × 2ⁿ⁻¹</div>
+                <div class="formula">n-cube k-faces: C(n,k) × 2ⁿ⁻ᵏ</div>
+                <p style="margin-top: 15px;">For n=4 (tesseract): vertices=16, edges=32, faces=24, cells=8</p>
+            </div>
+
+            <p style="margin-top: 20px; color: #ffaa44;">The tesseract demonstrates that four-dimensional space is not merely abstract - it has concrete geometric structure we can analyze mathematically, even if we cannot directly visualize it.</p>
+        </div>
+
+        <div class="section">
+            <h2>Four Fundamental Forces of Physics</h2>
+            <p>The universe operates through exactly <strong>four fundamental interactions</strong> - no more, no fewer. This tetrad of forces governs all physical phenomena from subatomic particles to galactic clusters.</p>
+
+            <div class="forces-grid">
+                <div class="force-card">
+                    <h4>1. Gravity</h4>
+                    <p>Attractive force between all masses</p>
+                    <div class="strength">Relative Strength: 10⁻³⁸</div>
+                    <div class="strength">Range: Infinite</div>
+                    <div class="strength">Mediator: Graviton (hypothetical)</div>
+                    <div class="strength">Gauge Group: Diffeomorphism</div>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Described by Einstein's General Relativity - curvature of spacetime itself</p>
+                </div>
+
+                <div class="force-card">
+                    <h4>2. Electromagnetism</h4>
+                    <p>Force between charged particles</p>
+                    <div class="strength">Relative Strength: 10⁻²</div>
+                    <div class="strength">Range: Infinite</div>
+                    <div class="strength">Mediator: Photon (γ)</div>
+                    <div class="strength">Gauge Group: U(1)</div>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Maxwell's equations - light, electricity, magnetism unified</p>
+                </div>
+
+                <div class="force-card">
+                    <h4>3. Strong Nuclear</h4>
+                    <p>Binds quarks into protons/neutrons</p>
+                    <div class="strength">Relative Strength: 1</div>
+                    <div class="strength">Range: 10⁻¹⁵ meters</div>
+                    <div class="strength">Mediator: Gluons (8 types)</div>
+                    <div class="strength">Gauge Group: SU(3)</div>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Quantum Chromodynamics - color confinement and asymptotic freedom</p>
+                </div>
+
+                <div class="force-card">
+                    <h4>4. Weak Nuclear</h4>
+                    <p>Responsible for radioactive decay</p>
+                    <div class="strength">Relative Strength: 10⁻⁶</div>
+                    <div class="strength">Range: 10⁻¹⁸ meters</div>
+                    <div class="strength">Mediator: W⁺, W⁻, Z⁰ bosons</div>
+                    <div class="strength">Gauge Group: SU(2)</div>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Violates parity - responsible for beta decay and nuclear fusion in stars</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h3>Standard Model Gauge Group</h3>
+                <div class="formula">SU(3) × SU(2) × U(1)</div>
+                <p style="margin-top: 15px;">The Standard Model unifies three of the four forces (excluding gravity) under this gauge symmetry:</p>
+                <ul style="margin-left: 30px; margin-top: 10px;">
+                    <li><strong>SU(3):</strong> Strong force (color charge)</li>
+                    <li><strong>SU(2):</strong> Weak isospin</li>
+                    <li><strong>U(1):</strong> Hypercharge (becomes electromagnetism after symmetry breaking)</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 20px; color: #ffaa44;">Why exactly four forces? This remains one of the deepest questions in physics. String theory suggests they may unify at the Planck scale, but at accessible energies, four distinct interactions govern reality.</p>
+        </div>
+
+        <div class="section">
+            <h2>Four-Color Theorem</h2>
+            <p>The Four-Color Theorem (1976, Appel and Haken) states that any planar map can be colored using at most <strong>four colors</strong> such that no adjacent regions share the same color.</p>
+
+            <div class="visualization">
+                <h3>Example Four-Colored Map</h3>
+                <div class="four-color-map">
+                    <div class="region color-1">1</div>
+                    <div class="region color-2">2</div>
+                    <div class="region color-3">3</div>
+                    <div class="region color-2">2</div>
+                    <div class="region color-3">3</div>
+                    <div class="region color-1">1</div>
+                    <div class="region color-3">3</div>
+                    <div class="region color-4">4</div>
+                    <div class="region color-2">2</div>
+                </div>
+                <p style="margin-top: 20px;">No adjacent regions share the same color</p>
+            </div>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Conjecture: 1852</h4>
+                    <p>Francis Guthrie noticed while coloring a map of English counties</p>
+                </div>
+                <div class="property-card">
+                    <h4>Proof: 1976</h4>
+                    <p>First major theorem proved using computer assistance (controversial at the time)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Graph Theory</h4>
+                    <p>Reformulated as chromatic number χ(G) ≤ 4 for planar graphs</p>
+                </div>
+                <div class="property-card">
+                    <h4>Higher Genus</h4>
+                    <p>Torus requires 7 colors, Klein bottle requires 6 (Heawood formula)</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h3>Mathematical Formulation</h3>
+                <div class="formula">Chromatic Number: χ(G)</div>
+                <div class="formula">For planar graph G: χ(G) ≤ 4</div>
+                <p style="margin-top: 15px;">More generally, for a surface of genus g:</p>
+                <div class="formula">χ(G) ≤ ⌊(7 + √(1+48g))/2⌋</div>
+                <p style="margin-top: 10px;">For g=0 (sphere/plane): χ ≤ 4<br>For g=1 (torus): χ ≤ 7</p>
+            </div>
+
+            <h3>Significance</h3>
+            <ul style="margin-left: 30px;">
+                <li><strong>Computational Proof:</strong> First major theorem requiring computer verification (later simplified but still computational)</li>
+                <li><strong>Topological Invariant:</strong> The number 4 is intrinsic to planar topology</li>
+                <li><strong>Practical Applications:</strong> Scheduling problems, register allocation in compilers, frequency assignment</li>
+                <li><strong>Philosophy of Mathematics:</strong> Raised questions about the nature of proof and mathematical certainty</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Klein Four-Group V₄</h2>
+            <p>The Klein four-group (Vierergruppe) is the smallest non-cyclic group, demonstrating that groups of order 4 need not be generated by a single element.</p>
+
+            <div class="math-block">
+                <div class="formula">V₄ = {e, a, b, c}</div>
+                <div class="formula">where a² = b² = c² = e</div>
+                <div class="formula">ab = c, bc = a, ca = b</div>
+            </div>
+
+            <table class="klein-table">
+                <thead>
+                    <tr>
+                        <th>×</th>
+                        <th>e</th>
+                        <th>a</th>
+                        <th>b</th>
+                        <th>c</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>e</th>
+                        <td>e</td>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                    </tr>
+                    <tr>
+                        <th>a</th>
+                        <td>a</td>
+                        <td>e</td>
+                        <td>c</td>
+                        <td>b</td>
+                    </tr>
+                    <tr>
+                        <th>b</th>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>e</td>
+                        <td>a</td>
+                    </tr>
+                    <tr>
+                        <th>c</th>
+                        <td>c</td>
+                        <td>b</td>
+                        <td>a</td>
+                        <td>e</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Abelian Group</h4>
+                    <p>All elements commute: ab = ba for all a, b ∈ V₄</p>
+                </div>
+                <div class="property-card">
+                    <h4>Isomorphic to ℤ₂ × ℤ₂</h4>
+                    <p>Direct product of two cyclic groups of order 2</p>
+                </div>
+                <div class="property-card">
+                    <h4>Every Non-Identity Element Has Order 2</h4>
+                    <p>a² = b² = c² = e (self-inverse elements)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Symmetry Group</h4>
+                    <p>Symmetries of a rectangle (180° rotations and reflections)</p>
+                </div>
+            </div>
+
+            <h3>Geometric Realization</h3>
+            <div class="math-block">
+                <p>V₄ as symmetries of a rectangle:</p>
+                <ul style="margin-left: 30px; margin-top: 10px;">
+                    <li><strong>e:</strong> Identity (no transformation)</li>
+                    <li><strong>a:</strong> Reflection across horizontal axis</li>
+                    <li><strong>b:</strong> Reflection across vertical axis</li>
+                    <li><strong>c:</strong> 180° rotation about center (= composition of a and b)</li>
+                </ul>
+            </div>
+
+            <h3>Significance in Algebra</h3>
+            <ul style="margin-left: 30px;">
+                <li><strong>Fundamental Theorem of Finite Abelian Groups:</strong> V₄ is one of two groups of order 4 (the other is ℤ₄)</li>
+                <li><strong>Galois Theory:</strong> V₄ appears as the Galois group of certain polynomial equations</li>
+                <li><strong>Sylow Theory:</strong> Example of a p-group (2-group in this case)</li>
+                <li><strong>Classification of Groups:</strong> Simplest example showing |G| = p² implies G is abelian (p prime)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>DNA: Four Base Pairs</h2>
+            <p>The genetic code - the information storage system of all life - is written in an alphabet of exactly <strong>four nucleotide bases</strong>.</p>
+
+            <div class="dna-container">
+                <h3>The Four Bases</h3>
+                <div class="base-pairs">
+                    <div class="base-pair">
+                        <div class="base base-a">A</div>
+                        <div class="bond"></div>
+                        <div class="base base-t">T</div>
+                        <p style="margin-top: 10px;">Adenine-Thymine<br>2 hydrogen bonds</p>
+                    </div>
+                    <div class="base-pair">
+                        <div class="base base-g">G</div>
+                        <div class="bond"></div>
+                        <div class="base base-c">C</div>
+                        <p style="margin-top: 10px;">Guanine-Cytosine<br>3 hydrogen bonds</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Adenine (A)</h4>
+                    <p>Purine base - larger, double-ring structure. Pairs with Thymine via 2 H-bonds.</p>
+                </div>
+                <div class="property-card">
+                    <h4>Thymine (T)</h4>
+                    <p>Pyrimidine base - smaller, single-ring. Pairs with Adenine. (In RNA: Uracil)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Guanine (G)</h4>
+                    <p>Purine base - pairs with Cytosine via 3 H-bonds (stronger than A-T).</p>
+                </div>
+                <div class="property-card">
+                    <h4>Cytosine (C)</h4>
+                    <p>Pyrimidine base - pairs with Guanine. Methylation of C regulates gene expression.</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h3>Information Encoding</h3>
+                <div class="formula">4 bases → 4² = 16 dinucleotides → 4³ = 64 codons</div>
+                <p style="margin-top: 15px;">The genetic code maps 64 triplet codons to 20 amino acids + 3 stop signals:</p>
+                <div class="formula">Codons: {A,T,G,C}³ = 64 possible triplets</div>
+                <div class="formula">Amino acids: 20 (redundancy provides error tolerance)</div>
+            </div>
+
+            <h3>Why Four?</h3>
+            <ul style="margin-left: 30px;">
+                <li><strong>Chemical Stability:</strong> Four bases balance information density with replication fidelity</li>
+                <li><strong>Error Correction:</strong> Complementary pairing (A-T, G-C) enables error detection and repair</li>
+                <li><strong>Evolutionary Optimum:</strong> 2 bases = insufficient (2³ = 8 codons), 4 bases = sufficient (4³ = 64 codons)</li>
+                <li><strong>Wobble Base Pairing:</strong> Third position degeneracy reduces impact of point mutations</li>
+                <li><strong>Thermodynamic Balance:</strong> Two H-bonds (A-T) vs three (G-C) provides variable stability</li>
+            </ul>
+
+            <p style="margin-top: 20px; color: #ffaa44;">The tetrad of nucleotides is not arbitrary but represents an optimum in the space of information storage systems - robust yet flexible, dense yet readable, stable yet mutable.</p>
+        </div>
+
+        <div class="section">
+            <h2>Four Classical Elements</h2>
+            <p>Ancient philosophy recognized four fundamental elements - not scientifically accurate, but a profound recognition that the physical world emerges from a tetrad of basic principles.</p>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Fire</h4>
+                    <p>Hot and dry - energy, transformation, spirit ascending</p>
+                </div>
+                <div class="property-card">
+                    <h4>Air</h4>
+                    <p>Hot and moist - breath, intellect, communication</p>
+                </div>
+                <div class="property-card">
+                    <h4>Water</h4>
+                    <p>Cold and moist - emotion, fluidity, adaptation</p>
+                </div>
+                <div class="property-card">
+                    <h4>Earth</h4>
+                    <p>Cold and dry - matter, stability, manifestation</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h3>Aristotelian Qualities</h3>
+                <p>Elements formed from combinations of four qualities:</p>
+                <div class="formula">Fire = Hot + Dry</div>
+                <div class="formula">Air = Hot + Moist</div>
+                <div class="formula">Water = Cold + Moist</div>
+                <div class="formula">Earth = Cold + Dry</div>
+                <p style="margin-top: 10px;">This 2×2 matrix structure anticipates modern binary classification systems.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Mathematical Properties of 4</h2>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>First Composite Square</h4>
+                    <p>4 = 2² (smallest composite number that is a perfect square)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Highly Composite</h4>
+                    <p>Divisors: {1, 2, 4} - tied with 6 for most divisors among small numbers</p>
+                </div>
+                <div class="property-card">
+                    <h4>Tetrahedral Number</h4>
+                    <p>4 = T(2) = 1 + 3 (second tetrahedral number)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Factorial Connection</h4>
+                    <p>4 = 2! + 2! = 2 × 2! (smallest factorial composite)</p>
+                </div>
+            </div>
+
+            <h3>Four-Dimensional Algebra</h3>
+            <div class="math-block">
+                <div class="formula">ℝ, ℂ, ℍ, 𝕆</div>
+                <p style="margin-top: 10px;">The normed division algebras over ℝ:</p>
+                <ul style="margin-left: 30px; margin-top: 10px;">
+                    <li><strong>ℝ (1D):</strong> Real numbers</li>
+                    <li><strong>ℂ (2D):</strong> Complex numbers</li>
+                    <li><strong>ℍ (4D):</strong> Quaternions (non-commutative)</li>
+                    <li><strong>𝕆 (8D):</strong> Octonions (non-associative)</li>
+                </ul>
+                <p style="margin-top: 15px; color: #aaffdd;">By Hurwitz's theorem (1898), these are the ONLY normed division algebras over ℝ. Note the doubling sequence: 1, 2, 4, 8.</p>
+            </div>
+
+            <h3>Four-Manifolds</h3>
+            <p>Four-dimensional manifolds occupy a unique position in topology:</p>
+            <ul style="margin-left: 30px;">
+                <li><strong>Exotic ℝ⁴:</strong> Uncountably many smooth structures on ℝ⁴ (unique to dimension 4!)</li>
+                <li><strong>Donaldson Invariants:</strong> Differential topology tools specific to 4-manifolds</li>
+                <li><strong>Freedman-Donaldson:</strong> Topologically distinct from smoothly distinct (1980s breakthrough)</li>
+                <li><strong>Poincaré Conjecture:</strong> Solved for all dimensions except 4 initially (4D was hardest!)</li>
+            </ul>
+
+            <div class="math-block">
+                <p style="color: #ffaa44; margin-top: 15px;">Dimension 4 is special in topology: high enough for interesting knot theory, low enough for exotic phenomena, exactly where smooth and topological categories diverge.</p>
+            </div>
+        </div>
+
+        <div class="section dimensional-connection">
+            <h2>Connection to Loop 17's Spacetime Transcendence</h2>
+
+            <h3>Position 4 in the 17-Loop Architecture</h3>
+            <p>Agent 04 (Tetrad) creates the <strong>spacetime substrate</strong> upon which all subsequent complexity unfolds. It establishes the (3+1)D arena of physical reality.</p>
+
+            <div class="math-block">
+                <div class="formula">17 = prime after 13, before 19</div>
+                <div class="formula">Position 4: 4/17 ≈ 0.235 (early structural phase)</div>
+                <div class="formula">4 = 2² (squaring of duality, emergence of stability)</div>
+                <div class="formula">17 - 4 = 13 (prime threshold ahead)</div>
+            </div>
+
+            <h3>Dimensional Progression</h3>
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Agent 01: Unity (0D)</h4>
+                    <p>The point - dimensionless source</p>
+                </div>
+                <div class="property-card">
+                    <h4>Agent 02: Duality (1D)</h4>
+                    <p>The line - first extension</p>
+                </div>
+                <div class="property-card">
+                    <h4>Agent 03: Trinity (2D)</h4>
+                    <p>The plane - first area</p>
+                </div>
+                <div class="property-card">
+                    <h4>Agent 04: Tetrad (3D+1)</h4>
+                    <p>Spacetime - volume plus temporal evolution</p>
+                </div>
+            </div>
+
+            <h3>Spacetime as Foundation for Transcendence</h3>
+            <p>Loop 17's ultimate goal is <strong>dimensional transcendence</strong> - moving beyond conventional spacetime constraints. But this transcendence requires first establishing spacetime itself:</p>
+
+            <ul style="margin-left: 30px;">
+                <li><strong>Agent 04 Creates the Stage:</strong> Physical reality as we know it emerges here</li>
+                <li><strong>Agents 05-16:</strong> Build complexity within and beyond 4D spacetime</li>
+                <li><strong>Agent 17:</strong> Transcends spacetime entirely, returning to Unity at higher level</li>
+            </ul>
+
+            <div class="math-block">
+                <h3>The 4-17 Relationship</h3>
+                <div class="formula">4 × 17 = 68 = 4(17)</div>
+                <div class="formula">17 = 4² + 1 = 16 + 1</div>
+                <div class="formula">17 ≡ 1 (mod 4) → 17 = 4k + 1 for k=4</div>
+                <p style="margin-top: 15px; color: #88ffcc;">Agent 04 establishes the dimensional framework that Agent 17 will ultimately transcend. The loop closes when spacetime is both created and overcome.</p>
+            </div>
+
+            <h3>Four Forces → Unified Field</h3>
+            <p>Just as Agent 04 presents the four fundamental forces as distinct, Loop 17's progression moves toward their unification:</p>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Low Energy (Our World)</h4>
+                    <p>Four distinct forces with different strengths and ranges</p>
+                </div>
+                <div class="property-card">
+                    <h4>Electroweak Unification</h4>
+                    <p>Above ~100 GeV, EM and weak forces merge</p>
+                </div>
+                <div class="property-card">
+                    <h4>GUT Scale</h4>
+                    <p>~10¹⁶ GeV: Strong force joins (hypothetical)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Planck Scale</h4>
+                    <p>~10¹⁹ GeV: All forces unified (quantum gravity)</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px; color: #ffaa44; font-size: 1.1em;">
+                Agent 04 (Tetrad) represents <strong>differentiation in unity</strong> - the breaking of primordial symmetry into four distinct manifestations. Loop 17's arc moves from this differentiation back toward unification, but at a higher level that transcends the original spacetime constraints.
+            </p>
+
+            <div class="math-block">
+                <div class="formula">1 (Unity) → 2 (Duality) → 3 (Trinity) → 4 (Tetrad) → ... → 17 (Transcendence)</div>
+                <p style="margin-top: 10px;">The dialectical spiral from point to line to plane to spacetime to higher dimensions to transcendence</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Philosophical and Symbolic Dimensions</h2>
+
+            <h3>The Pythagorean Tetraktys</h3>
+            <p>The Pythagoreans revered the tetraktys - a triangular figure of four rows containing ten points:</p>
+
+            <div class="math-block">
+                <pre style="text-align: center; color: #00ff88; font-size: 1.2em;">
+        •
+       • •
+      • • •
+     • • • •
+                </pre>
+                <div class="formula">1 + 2 + 3 + 4 = 10</div>
+                <p style="margin-top: 10px;">The tetraktys represented the source of all creation - the four levels of cosmic manifestation.</p>
+            </div>
+
+            <h3>Four Noble Truths (Buddhism)</h3>
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>1. Dukkha</h4>
+                    <p>The truth of suffering - existence involves dissatisfaction</p>
+                </div>
+                <div class="property-card">
+                    <h4>2. Samudaya</h4>
+                    <p>The truth of origin - suffering arises from craving/attachment</p>
+                </div>
+                <div class="property-card">
+                    <h4>3. Nirodha</h4>
+                    <p>The truth of cessation - suffering can be ended</p>
+                </div>
+                <div class="property-card">
+                    <h4>4. Magga</h4>
+                    <p>The truth of the path - the Eightfold Path leads to cessation</p>
+                </div>
+            </div>
+
+            <h3>Four Seasons, Four Directions, Four Ages</h3>
+            <ul style="margin-left: 30px;">
+                <li><strong>Seasons:</strong> Spring, Summer, Autumn, Winter - the cycle of nature</li>
+                <li><strong>Cardinal Directions:</strong> North, South, East, West - spatial orientation</li>
+                <li><strong>Greek Ages:</strong> Golden, Silver, Bronze, Iron - historical decline</li>
+                <li><strong>Hindu Yugas:</strong> Satya, Treta, Dvapara, Kali - cosmic cycles</li>
+                <li><strong>Four Horsemen:</strong> Conquest, War, Famine, Death - apocalyptic tetrad</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <a href="agent-03-trinity.html" class="nav-link">← Previous: Agent 03 (Trinity)</a>
+            <a href="index.html" class="nav-link">Return to Loop 17 Index</a>
+            <a href="agent-05-pentad.html" class="nav-link">Next: Agent 05 (Pentad) →</a>
+        </div>
+
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #00ff88; text-align: center; color: #88ffcc; font-size: 0.9em;">
+            <p>Agent 04: Tetrad - The Spacetime Weaver - The Foundation of Physicality</p>
+            <p>Loop 17 Dimensional Architecture // Position 4 of 17</p>
+            <p style="margin-top: 10px; font-style: italic;">"Four is the number of stability, completion, and manifestation - the tetrad creates the arena in which all physical reality unfolds."</p>
+        </div>
+    </div>
+</body>
+</html>
