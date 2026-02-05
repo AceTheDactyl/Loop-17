@@ -1,0 +1,12 @@
+# Zone Identifier files
+*Zone.Identifier
+
+# macOS metadata files
+._*
+.DS_Store
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
