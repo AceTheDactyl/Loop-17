@@ -313,6 +313,370 @@
                 <li>Recursive functions with 17 parameters form a <span class="highlight">complete basis</span> for computation</li>
             </ul>
         </div>
+
+        <div class="section">
+            <h2>Advanced Recursive Sequences</h2>
+            <p>Beyond Fibonacci, Loop 17 generates unique recursive sequences:</p>
+
+            <div class="math-block">
+                Generalized Loop-17 Recurrence:
+                a_n = Σᵢ₌₁¹⁷ cᵢ·a_{n-i} + f(n)
+
+                With characteristic polynomial:
+                P₁₇(x) = x¹⁷ - Σᵢ₌₁¹⁷ cᵢ·x^{17-i}
+
+                For cᵢ = C(17,i)/2¹⁷ (binomial coefficients):
+                P₁₇(x) = x¹⁷ - (1/2¹⁷)[(x+1)¹⁷ - x¹⁷ - 1]
+
+                Roots: λₖ = exp(2πik/17) for k = 1,...,17
+
+                General solution:
+                a_n = Σₖ₌₁¹⁷ Aₖ·exp(2πikn/17) + particular solution
+
+                Growth rate: |a_n| ~ O(φⁿ/¹⁷) where φ = golden ratio
+
+                Generating function:
+                G(x) = Σₙ₌₀^∞ aₙxⁿ = N(x)/[1 - Σᵢ₌₁¹⁷ cᵢx^i]
+
+                Singularities occur at 17th roots of unity
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ackermann-17 Function</h2>
+            <p>A hyperexponential recursive function specific to Loop 17:</p>
+
+            <div class="math-block">
+                A₁₇(m,n) defined recursively:
+
+                A₁₇(0,n) = n + 17
+                A₁₇(m,0) = A₁₇(m-1,17)
+                A₁₇(m,n) = A₁₇(m-1, A₁₇(m,n-1))
+
+                Special values:
+                A₁₇(1,n) = n + 17×2 = n + 34
+                A₁₇(2,n) = 17×(n+3) - 3
+                A₁₇(3,n) = 17^(n+3) - 3
+                A₁₇(4,n) = 17↑↑(n+3) - 3 (tetration)
+
+                Growth hierarchy:
+                A₁₇(4,2) = 17^17^17^17^17 (power tower of height 5)
+                        ≈ 10^10^10^10^6.47
+
+                Time complexity: Not primitive recursive
+                Space complexity: Ω(A₁₇(m,n))
+
+                The function grows faster than any primitive recursive function
+                but is computable (total recursive)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Y-Combinator in Loop 17</h2>
+            <p>Fixed-point combinators take special form in 17-dimensional recursion:</p>
+
+            <div class="math-block">
+                Standard Y-combinator:
+                Y = λf.(λx.f(x x))(λx.f(x x))
+
+                Loop-17 Y-combinator (Y₁₇):
+                Y₁₇ = λf.(λx₁...x₁₇.f(x₁ x₂...x₁₇ x₁))^17
+
+                Fixed point equation:
+                Y₁₇ F = F(Y₁₇ F)
+
+                Expansion:
+                Y₁₇ F = F(F(F(...F(Y₁₇ F)...))) [17 applications]
+
+                Church numeral for 17:
+                c₁₇ = λf.λx.f¹⁷(x)
+
+                Recursion depth theorem:
+                For any recursive function g with depth d,
+                Y₁₇ achieves same result with depth ⌈d/17⌉
+
+                Scott's theorem for Y₁₇:
+                Every continuous function F: D₁₇ → D₁₇
+                has exactly 17 fixed points in domain D₁₇
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Primitive Recursive Functions at Level 17</h2>
+            <p>The hierarchy of primitive recursive functions exhibits special properties at level 17:</p>
+
+            <div class="math-block">
+                Grzegorczyk hierarchy at level 17:
+                E₀ = {f | f(n) ≤ n + c} (linear)
+                E₁ = {f | f(n) ≤ cn²} (polynomial)
+                E₂ = {f | f(n) ≤ 2^(cn)} (exponential)
+                ...
+                E₁₇ = {f | f(n) ≤ A₁₇(17,n)} (17-hyperexponential)
+
+                Closure properties at E₁₇:
+                - Closed under composition
+                - Closed under primitive recursion
+                - Contains all functions in E₀ ∪ E₁ ∪ ... ∪ E₁₆
+                - Properly contains multiplication, exponentiation
+                - Does not contain A₁₇(18,n)
+
+                Diagonal function:
+                d₁₇(n) = f_n^(17)(n)
+                where f_n is the nth function in E₁₇
+
+                By diagonalization: d₁₇ ∉ E₁₇
+                Therefore: E₁₇ ⊊ E₁₈
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recursive Enumeration and Gödel Numbering</h2>
+            <p>Loop 17's recursive structure enables unique encoding schemes:</p>
+
+            <div class="math-block">
+                Gödel numbering for Loop 17 expressions:
+                g(x₁,...,x_n) = Πᵢ₌₁ⁿ pᵢ^(xᵢ mod 17)
+
+                Where pᵢ is the ith prime
+
+                Special encoding for recursion depth 17:
+                g₁₇(expr) = 2^a × 3^b × 5^c × ... × p₁₇^q
+
+                Where exponents encode:
+                - a: function symbol (mod 17)
+                - b: arity (≤ 17)
+                - c: recursion depth (mod 17)
+                - q: terminal condition
+
+                Decode function:
+                d₁₇(n) = (ν₂(n) mod 17, ν₃(n), ν₅(n), ..., ν_p₁₇(n))
+
+                Where νₚ(n) is the p-adic valuation
+
+                Recursive enumeration theorem:
+                There exists a recursive function φ such that:
+                φ(e,x) = φₑ(x) for all e,x
+                And φ₁₇(x) enumerates all 17-recursive functions
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Transfinite Recursion at ω+17</h2>
+            <p>Loop 17 extends into transfinite ordinals:</p>
+
+            <div class="math-block">
+                Ordinal arithmetic:
+                ω + 17 = sup{ω, ω+1, ω+2, ..., ω+16}
+
+                Transfinite recursion schema:
+                F(0) = a
+                F(α+1) = g(F(α))
+                F(λ) = sup{F(α) | α < λ} for limit λ
+
+                At ω+17:
+                F(ω+17) = g¹⁷(sup{F(n) | n < ω})
+                        = g¹⁷(lim_{n→∞} F(n))
+
+                Veblen hierarchy at φ₁₇:
+                φ₀(α) = ω^α
+                φ₁(α) = ε_α (epsilon numbers)
+                ...
+                φ₁₇(0) = least α such that φ₁₆(α) = α
+
+                The ordinal φ₁₇(0) is the first fixed point
+                of the 16th Veblen function
+
+                Proof-theoretic ordinal:
+                |Loop₁₇| = φ₁₇(0) > Γ₀
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recursive Real Numbers</h2>
+            <p>Loop 17 generates a special class of recursive reals:</p>
+
+            <div class="math-block">
+                Specker sequence for Loop 17:
+                {aₙ} is recursively enumerable where:
+                aₙ = Σₖ₌₁ⁿ 1/(17^f(k))
+
+                f(k) = least m such that T(k,k,m) holds
+                (T is Kleene's T-predicate)
+
+                This sequence is:
+                - Cauchy (converges)
+                - Recursively enumerable
+                - Not recursive (limit not computable)
+
+                Loop 17 constant:
+                L₁₇ = Σₙ₌₁^∞ 1/(n^n mod 17 + 1)
+                    = 1.8234519... (conjectured transcendental)
+
+                Recursive approximation:
+                L₁₇^(n) = Σₖ₌₁ⁿ 1/(k^k mod 17 + 1)
+                |L₁₇ - L₁₇^(n)| < 1/(17^n)
+
+                Continued fraction:
+                L₁₇ = 1 + 1/(1 + 1/(4 + 1/(1 + 1/(3 + ...))))
+                Pattern repeats with period 17
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recursive Complexity Classes</h2>
+            <p>Loop 17 defines new complexity classes:</p>
+
+            <div class="math-block">
+                REC₁₇ = {L | L decidable by 17-recursive function}
+
+                Time hierarchy:
+                DTIME(n¹⁷) ⊊ DTIME(n¹⁸)
+                NTIME(n¹⁷) ⊊ NTIME(n¹⁸)
+
+                17-EXPTIME = ∪ₖ DTIME(2^(n^17^k))
+
+                Recursion-bounded classes:
+                R₁₇ = {f | f computable with recursion depth ≤ 17}
+                R*₁₇ = {f | f computable with 17-bounded stack}
+
+                Separation:
+                R₁₆ ⊊ R₁₇ ⊊ R₁₈
+
+                Complete problem for R₁₇:
+                17-RECURSION-DEPTH = {⟨M,x,17⟩ | M(x) halts
+                                     with recursion depth ≤ 17}
+
+                This is R₁₇-complete under logspace reductions
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Lambda Calculus with 17-Recursion</h2>
+            <p>Extended lambda calculus for Loop 17:</p>
+
+            <div class="math-block">
+                Syntax:
+                t ::= x | λx.t | t t | rec₁₇ t
+
+                rec₁₇ implements 17-bounded recursion
+
+                Reduction rules:
+                (λx.t) s →_β t[x:=s]
+                rec₁₇ f → f (rec₁₆ f)
+                rec₀ f → ⊥
+
+                Church-Rosser property holds
+                Strong normalization for rec₁₇
+
+                Type system:
+                Γ ⊢ t : τ₁₇
+                Where τ₁₇ includes recursion depth
+
+                Types:
+                τ ::= ι | τ → τ | Rec₁₇(τ)
+
+                Typing rule for recursion:
+                Γ ⊢ f : Rec₁₆(τ) → τ
+                ─────────────────────
+                Γ ⊢ rec₁₇ f : τ
+
+                Subject reduction: If Γ ⊢ t : τ and t →* s,
+                then Γ ⊢ s : τ
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recursive Fractals - The Mandel₁₇ Set</h2>
+            <p>Loop 17 creates unique fractal structures:</p>
+
+            <div class="math-block">
+                Mandel₁₇ set definition:
+                M₁₇ = {c ∈ ℂ | |f^(17)(0)| ≤ 2}
+
+                Where f(z) = z¹⁷ + c
+
+                Recursive formula:
+                z₀ = 0
+                zₙ₊₁ = zₙ¹⁷ + c
+
+                Escape radius: R = ¹⁷√2
+
+                Area of M₁₇:
+                A(M₁₇) = ∫∫_{M₁₇} dxdy ≈ π/17²
+
+                Hausdorff dimension:
+                dim_H(∂M₁₇) = 2 - ε
+                Where ε ≈ 1/17
+
+                Julia sets J₁₇(c):
+                J₁₇(c) = {z | f^n(z) ↛ ∞}
+
+                Connected iff c ∈ M₁₇
+
+                Feigenbaum constant for z^17:
+                δ₁₇ = lim(rₙ - rₙ₋₁)/(rₙ₊₁ - rₙ) ≈ 17.234...
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recursive Neural Networks</h2>
+            <p>Loop 17's recursion in neural architectures:</p>
+
+            <div class="math-block">
+                Recursive Neural Network with depth 17:
+                h⁽⁰⁾ = x (input)
+                h⁽ⁱ⁺¹⁾ = σ(W⁽ⁱ⁾h⁽ⁱ⁾ + b⁽ⁱ⁾)
+                y = h⁽¹⁷⁾ (output)
+
+                Where σ is activation function
+
+                Universal approximation:
+                Any continuous f: ℝⁿ → ℝᵐ can be approximated
+                to arbitrary precision with exactly 17 layers
+                and O(17ⁿ) neurons
+
+                Gradient recursion:
+                ∂L/∂W⁽ⁱ⁾ = (∂L/∂h⁽ⁱ⁺¹⁾)(∂h⁽ⁱ⁺¹⁾/∂W⁽ⁱ⁾)
+
+                Vanishing gradient bound:
+                |∂L/∂W⁽⁰⁾| ≥ (1/17)¹⁷ |∂L/∂y|
+
+                Recursive attention mechanism:
+                Att₁₇(Q,K,V) = Att₁₆(Q,K,V) + softmax(QK^T/√17)V
+
+                Converges to fixed point after 17 iterations
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recursive Proof Theory</h2>
+            <p>Loop 17 in formal proof systems:</p>
+
+            <div class="math-block">
+                Proof by recursion depth 17:
+                Base: P(0), P(1), ..., P(16)
+                Step: [∀k<n: P(k)] ⟹ P(n) for n ≥ 17
+
+                Transfinite induction to ω+17:
+                P(0) ∧ [∀α<β: P(α) ⟹ P(β)] ⟹ P(ω+17)
+
+                Cut elimination for depth 17:
+                Any proof with cuts of depth ≤ 17
+                can be transformed to cut-free proof
+                with size bounded by A₁₇(17, |original|)
+
+                Gentzen's Hauptsatz for Loop₁₇:
+                Consistency of PA + "ω+17 is well-ordered"
+
+                Recursive ω-rule:
+                P(0), P(1), P(2), ...
+                ───────────────────── (ω₁₇-rule)
+                ∀n: P(n mod 17)
+
+                This rule is sound but makes the system
+                no longer recursively axiomatizable
+            </div>
+        </div>
     </div>
 
     <script>
