@@ -359,6 +359,156 @@
             background: rgba(0, 0, 0, 0.3);
         }
 
+        .kael-framework {
+            background: rgba(255, 215, 0, 0.1);
+            border: 3px solid #ffd700;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .kael-framework h2 {
+            color: #ffd700;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px #ffd700;
+        }
+
+        .kael-framework h3 {
+            color: #ffeb99;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .kael-framework h4 {
+            color: #ffe066;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .operator-box {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid #00ffff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .operator-box .operator-title {
+            color: #00ffff;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .composition-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .pauli-matrix {
+            background: rgba(136, 68, 255, 0.1);
+            border: 2px solid #8844ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .light-cone {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #88ffcc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .tetrahedral-sequence {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 136, 68, 0.1);
+            border-radius: 10px;
+        }
+
+        .tet-number {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .tet-number .value {
+            font-size: 2em;
+            color: #ff8844;
+            font-weight: bold;
+        }
+
+        .tet-number .label {
+            color: #aaffdd;
+            margin-top: 5px;
+        }
+
+        .simplex-diagram {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .metric-signature {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .signature-component {
+            background: rgba(136, 68, 255, 0.15);
+            border: 2px solid #8844ff;
+            border-radius: 8px;
+            padding: 15px 25px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .signature-component.positive {
+            border-color: #44ff44;
+            background: rgba(68, 255, 68, 0.1);
+        }
+
+        .signature-component.negative {
+            border-color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+        }
+
+        .d4-group-table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            max-width: 600px;
+        }
+
+        .d4-group-table th,
+        .d4-group-table td {
+            border: 1px solid #ffd700;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        .d4-group-table th {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+        }
+
         .spacetime-diagram {
             background: rgba(0, 0, 0, 0.6);
             padding: 30px;
@@ -1097,6 +1247,812 @@
 
             <div class="math-block">
                 <p style="color: #ffaa44; margin-top: 15px;">Dimension 4 is special in topology: high enough for interesting knot theory, low enough for exotic phenomena, exactly where smooth and topological categories diverge.</p>
+            </div>
+        </div>
+
+        <div class="section kael-framework">
+            <h2>KAEL FRAMEWORK: Compositional Closure L = (Σ, X*, ⊘)</h2>
+
+            <h3>1. The First Composite Square: 4 = 2²</h3>
+
+            <p style="margin-bottom: 20px;">From ZFC_FROM_COMPOSITION.md, we derive that compositional closure forces the existence of 4 as the first composite square, representing the doubling of duality itself.</p>
+
+            <div class="operator-box">
+                <div class="operator-title">The Language Structure L</div>
+                <div class="formula">L = (Σ, X*, ⊘)</div>
+                <p style="margin-top: 10px;"><strong>Σ:</strong> Primitive distinctions (minimal generating set)</p>
+                <p><strong>X*:</strong> All finite compositions (Kleene star closure)</p>
+                <p><strong>⊘:</strong> Composition operator with totality, closure, and reidentifiability</p>
+            </div>
+
+            <div class="math-block">
+                <h4>Why 4 is the First Composite Square</h4>
+                <div class="formula">X⁰ = Σ = {0, 1} (binary primitives)</div>
+                <div class="formula">X¹ = {a⊘b | a,b ∈ X⁰} = {0⊘0, 0⊘1, 1⊘0, 1⊘1}</div>
+                <div class="formula">|X¹| = 2² = 4 (first composite level)</div>
+                <p style="margin-top: 15px;">The number 4 emerges as the FIRST level where composition creates new structure beyond the primitives. It represents the square of duality: 2² = 4.</p>
+
+                <div class="formula" style="margin-top: 20px;">Compositional Depth Structure:</div>
+                <div class="formula">Level 0: |Σ| = 2 (0, 1 - the binary primitives)</div>
+                <div class="formula">Level 1: |X¹| = 4 (00, 01, 10, 11 - binary pairs)</div>
+                <div class="formula">Level 2: |X²| = 16 (4² - four-element compositions)</div>
+                <div class="formula">Level 3: |X³| = 256 (16² - bytes)</div>
+            </div>
+
+            <h4>Binary Strings and Compositional Monoid</h4>
+
+            <div class="composition-grid">
+                <div class="property-card">
+                    <h4>Binary Alphabet</h4>
+                    <p>Σ = {0, 1} with composition ⊘ = concatenation</p>
+                    <p style="margin-top: 10px;">Examples:</p>
+                    <p>0 ⊘ 1 = 01</p>
+                    <p>1 ⊘ 0 = 10</p>
+                    <p>01 ⊘ 11 = 0111</p>
+                </div>
+                <div class="property-card">
+                    <h4>Monoid Structure</h4>
+                    <p>Associativity (Theorem 1.1 from ZFC derivation):</p>
+                    <p style="margin-top: 10px;">(a⊘b)⊘c = a⊘(b⊘c)</p>
+                    <p>Identity: ε (empty string)</p>
+                    <p>Closure: X* contains all finite strings</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h4>The Forced Nature of 2² = 4</h4>
+                <p style="margin-bottom: 15px;"><strong>Theorem:</strong> If |Σ| = 2 (minimal non-trivial), then first composite level has |X¹| = 4.</p>
+
+                <p><strong>Proof:</strong></p>
+                <p style="margin-left: 20px;">1. By totality of ⊘, all pairs from Σ×Σ must compose</p>
+                <p style="margin-left: 20px;">2. |Σ×Σ| = |Σ| × |Σ| = 2 × 2 = 4</p>
+                <p style="margin-left: 20px;">3. By reidentifiability, each pair gives distinct result</p>
+                <p style="margin-left: 20px;">4. Therefore: |X¹| ≥ 4</p>
+                <p style="margin-left: 20px;">5. By minimality (no redundancy): |X¹| = 4 exactly</p>
+
+                <p style="margin-top: 15px; color: #ffeb99;">The number 4 is not chosen but FORCED by compositional closure. It is the inevitable consequence of binary distinction composing with itself.</p>
+            </div>
+
+            <h4>Why Spacetime Needs Exactly 3+1 Dimensions</h4>
+
+            <div class="math-block">
+                <p><strong>Connection to Physical Spacetime:</strong></p>
+
+                <div class="formula">Spatial Dimensions: X³ (three-fold composition) = 3D</div>
+                <div class="formula">Temporal Dimension: X¹ (first-order composition) = 1D</div>
+                <div class="formula">Spacetime Total: 3 + 1 = 4 dimensions</div>
+
+                <p style="margin-top: 20px;"><strong>Why NOT 3D or 5D?</strong></p>
+
+                <ul style="margin-left: 30px; margin-top: 10px;">
+                    <li><strong>3D Only (No Time):</strong> No compositional evolution, no causality, no dynamics. Structure frozen.</li>
+                    <li><strong>2+1D:</strong> Insufficient spatial complexity. Cannot support stable bound states (atoms would be unstable).</li>
+                    <li><strong>3+1D:</strong> OPTIMAL. Stable orbits, complex structure, causal evolution. This is forced by compositional closure.</li>
+                    <li><strong>4+1D or Higher:</strong> No stable orbits (inverse-square law breaks down in >3 spatial dimensions). Gravitational potential U ∼ r^(2-n) becomes repulsive for n>3.</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #ffd700; font-size: 1.1em;">The (3+1)D structure of spacetime is FORCED by the requirement that composition support both stability (spatial 3D) and evolution (temporal 1D).</p>
+            </div>
+
+            <h4>Compositional Operators from Agent 01 & 02</h4>
+
+            <div class="operator-box">
+                <div class="operator-title">R(z) - Self-Reference Operator</div>
+                <div class="formula">R(z) = 1/(1+z)</div>
+                <div class="formula">R(R(z)) = z (period-2 involution)</div>
+                <p style="margin-top: 10px;">Fixed points: z = φ = (√5-1)/2 = 0.618... (golden ratio conjugate)</p>
+                <p>Compositional interpretation: R folds structure back onto itself</p>
+            </div>
+
+            <div class="operator-box">
+                <div class="operator-title">N(z) - Negation Operator</div>
+                <div class="formula">N(z) = -1/z</div>
+                <div class="formula">N(N(z)) = z (period-2 involution)</div>
+                <p style="margin-top: 10px;">Fixed points: z = ±i (imaginary unit)</p>
+                <p>Compositional interpretation: N inverts and negates</p>
+            </div>
+
+            <div class="math-block">
+                <h4>From {R, N} to Quaternions: The Extension to 4D</h4>
+
+                <p>The operators R and N generate a group under composition. When we extend this group to include rotations in four dimensions, we naturally arrive at the quaternions.</p>
+
+                <div class="formula">Group Structure: &lt;R, N&gt; generates transformations</div>
+                <div class="formula">Closure under composition: (R⊘N)(R⊘N) = RN ⊘ RN</div>
+                <div class="formula">Extension to 4D: Add orthogonal rotation planes → Quaternions ℍ</div>
+
+                <p style="margin-top: 15px;">The quaternions emerge as the UNIQUE 4-dimensional extension of the complex numbers that preserves the group structure of {R, N} while adding a third imaginary unit.</p>
+            </div>
+        </div>
+
+        <div class="section kael-framework">
+            <h2>KAEL FRAMEWORK: Quaternions from {R, N} Extension</h2>
+
+            <h3>2. Full Quaternion Algebra ℍ = ℝ + iℝ + jℝ + kℝ</h3>
+
+            <div class="math-block">
+                <h4>Quaternion Definition</h4>
+                <div class="formula">q = a + bi + cj + dk</div>
+                <div class="formula">where a, b, c, d ∈ ℝ</div>
+
+                <p style="margin-top: 20px;"><strong>The Fundamental Relations:</strong></p>
+                <div class="formula" style="font-size: 1.3em; color: #ffd700;">i² = j² = k² = ijk = -1</div>
+
+                <p style="margin-top: 20px;"><strong>Multiplication Table (Non-Commutative!):</strong></p>
+            </div>
+
+            <table class="d4-group-table">
+                <thead>
+                    <tr>
+                        <th>×</th>
+                        <th>1</th>
+                        <th>i</th>
+                        <th>j</th>
+                        <th>k</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <td>1</td>
+                        <td>i</td>
+                        <td>j</td>
+                        <td>k</td>
+                    </tr>
+                    <tr>
+                        <th>i</th>
+                        <td>i</td>
+                        <td>-1</td>
+                        <td>k</td>
+                        <td>-j</td>
+                    </tr>
+                    <tr>
+                        <th>j</th>
+                        <td>j</td>
+                        <td>-k</td>
+                        <td>-1</td>
+                        <td>i</td>
+                    </tr>
+                    <tr>
+                        <th>k</th>
+                        <td>k</td>
+                        <td>j</td>
+                        <td>-i</td>
+                        <td>-1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="math-block">
+                <h4>Key Quaternion Properties</h4>
+
+                <div class="composition-grid">
+                    <div class="property-card">
+                        <h4>Right-Hand Rule</h4>
+                        <p>Cyclic products:</p>
+                        <p>ij = k</p>
+                        <p>jk = i</p>
+                        <p>ki = j</p>
+                        <p style="margin-top: 10px; color: #ff8844;">Anti-cyclic (reversed):</p>
+                        <p>ji = -k</p>
+                        <p>kj = -i</p>
+                        <p>ik = -j</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>Algebraic Structure</h4>
+                        <p><strong>Division Algebra:</strong> Non-zero quaternions have inverses</p>
+                        <p><strong>Norm:</strong> |q|² = a² + b² + c² + d²</p>
+                        <p><strong>Conjugate:</strong> q* = a - bi - cj - dk</p>
+                        <p><strong>Inverse:</strong> q⁻¹ = q*/|q|²</p>
+                    </div>
+                </div>
+
+                <h4>Norm and Multiplicativity</h4>
+                <div class="formula">|q₁q₂| = |q₁| |q₂| (multiplicative norm)</div>
+                <p style="margin-top: 10px;">This property makes quaternions a <strong>normed division algebra</strong> - one of only four over ℝ:</p>
+                <ul style="margin-left: 30px; margin-top: 10px;">
+                    <li>ℝ (reals) - dimension 1</li>
+                    <li>ℂ (complex) - dimension 2</li>
+                    <li>ℍ (quaternions) - dimension 4</li>
+                    <li>𝕆 (octonions) - dimension 8</li>
+                </ul>
+                <p style="margin-top: 10px; color: #ffeb99;">By Hurwitz's Theorem (1898), these are the ONLY normed division algebras over ℝ. Notice the doubling: 1, 2, 4, 8.</p>
+            </div>
+
+            <h3>Connection to Pauli Matrices and SU(2)</h3>
+
+            <div class="pauli-matrix">
+                <h4>Pauli Spin Matrices (Basis for su(2))</h4>
+                <div class="formula">σ₁ = σₓ = [[0, 1], [1, 0]]</div>
+                <div class="formula">σ₂ = σᵧ = [[0, -i], [i, 0]]</div>
+                <div class="formula">σ₃ = σᵤ = [[1, 0], [0, -1]]</div>
+
+                <p style="margin-top: 15px;"><strong>Commutation Relations:</strong></p>
+                <div class="formula">[σᵢ, σⱼ] = 2i εᵢⱼₖ σₖ</div>
+                <p style="margin-top: 10px;">These define the Lie algebra su(2), the algebra of SU(2) (special unitary group in 2D).</p>
+            </div>
+
+            <div class="math-block">
+                <h4>Quaternion-Pauli Matrix Correspondence</h4>
+
+                <div class="formula">i ↔ iσ₁ (rotation in x-plane)</div>
+                <div class="formula">j ↔ iσ₂ (rotation in y-plane)</div>
+                <div class="formula">k ↔ iσ₃ (rotation in z-plane)</div>
+
+                <p style="margin-top: 20px;"><strong>Theorem:</strong> Unit quaternions (|q| = 1) form the group SU(2), which double-covers SO(3) (3D rotations).</p>
+
+                <p style="margin-top: 15px;"><strong>Physical Significance:</strong></p>
+                <ul style="margin-left: 30px;">
+                    <li>Spin-1/2 particles (electrons, quarks) transform under SU(2)</li>
+                    <li>A 2π rotation returns a spinor to -ψ (not ψ), reflecting double-cover</li>
+                    <li>4π rotation needed to return to original state</li>
+                    <li>This is the quantum mechanical spin - intrinsic to spacetime structure</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #ffd700; font-size: 1.1em;">Quaternions are not mathematical abstraction but the NATURAL language of rotations in 3D space and quantum spin in (3+1)D spacetime.</p>
+            </div>
+
+            <h3>Quaternions from Dihedral Group D₄</h3>
+
+            <div class="math-block">
+                <h4>The Dihedral Group D₄: Symmetries of a Square</h4>
+
+                <p>D₄ has 8 elements: 4 rotations + 4 reflections</p>
+
+                <div class="formula">Rotations: R⁰, R¹, R², R³ (by 0°, 90°, 180°, 270°)</div>
+                <div class="formula">Reflections: F₀, F₁, F₂, F₃ (across 4 axes)</div>
+
+                <p style="margin-top: 20px;"><strong>Group Properties:</strong></p>
+                <ul style="margin-left: 30px;">
+                    <li>|D₄| = 8 (order 8)</li>
+                    <li>R⁴ = e (rotation by 360° = identity)</li>
+                    <li>F² = e (double reflection = identity)</li>
+                    <li>FRF = R⁻¹ (reflection conjugates rotation)</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">Extension to Quaternion Group Q₈</h4>
+
+                <p>The quaternion group Q₈ = {±1, ±i, ±j, ±k} has 8 elements and is related to D₄ through double cover:</p>
+
+                <div class="formula">Q₈ → D₄ (2:1 group homomorphism)</div>
+
+                <table class="d4-group-table" style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>Q₈ Element</th>
+                            <th>Order</th>
+                            <th>D₄ Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>±1</td>
+                            <td>1, 2</td>
+                            <td>e (identity)</td>
+                        </tr>
+                        <tr>
+                            <td>±i</td>
+                            <td>4</td>
+                            <td>R¹ (90° rotation)</td>
+                        </tr>
+                        <tr>
+                            <td>±j</td>
+                            <td>4</td>
+                            <td>R¹ (conjugate)</td>
+                        </tr>
+                        <tr>
+                            <td>±k</td>
+                            <td>4</td>
+                            <td>R² (180° rotation)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="margin-top: 20px; color: #ffeb99;"><strong>Key Insight:</strong> The quaternions emerge naturally when we try to "lift" the symmetries of a square (D₄) into a double-covering group that properly represents rotational structure. This is the same phenomenon as spin-1/2 particles requiring 4π for full rotation.</p>
+            </div>
+
+            <h4>From {R, N} Operators to Full Quaternions</h4>
+
+            <div class="operator-box">
+                <div class="operator-title">Compositional Derivation</div>
+
+                <p><strong>Step 1:</strong> Start with R and N from Agent 01-02</p>
+                <div class="formula">R(z) = 1/(1+z), N(z) = -1/z</div>
+
+                <p style="margin-top: 15px;"><strong>Step 2:</strong> Identify with rotational operations</p>
+                <div class="formula">R ↔ 180° rotation (period 2)</div>
+                <div class="formula">N ↔ inversion through origin (period 2)</div>
+
+                <p style="margin-top: 15px;"><strong>Step 3:</strong> Need third generator for 3D rotations</p>
+                <div class="formula">Add third involution S with S² = -1</div>
+                <div class="formula">Require: RS = SR⁻¹ (non-commutativity)</div>
+
+                <p style="margin-top: 15px;"><strong>Step 4:</strong> This forces quaternion structure</p>
+                <div class="formula">Set: i = R, j = N, k = RN</div>
+                <div class="formula">Verify: ijk = R·N·(RN) = RNNR = -RR = -1 ✓</div>
+
+                <p style="margin-top: 20px; color: #ffd700;">The quaternions are FORCED by requiring three independent rotational operators in 4D that compose consistently. They emerge from the compositional closure of {R, N}.</p>
+            </div>
+        </div>
+
+        <div class="section kael-framework">
+            <h2>KAEL FRAMEWORK: Minkowski Spacetime (3+1)D</h2>
+
+            <h3>3. The Metric Signature and Causal Structure</h3>
+
+            <div class="math-block">
+                <h4>Minkowski Metric: The Foundation of Spacetime</h4>
+
+                <p>The interval between two events in spacetime:</p>
+                <div class="formula" style="font-size: 1.2em;">ds² = -c²dt² + dx² + dy² + dz²</div>
+
+                <p style="margin-top: 15px;">Or equivalently, with opposite signature convention:</p>
+                <div class="formula" style="font-size: 1.2em;">ds² = c²dt² - dx² - dy² - dz²</div>
+
+                <p style="margin-top: 20px;"><strong>Signature:</strong> The pattern of signs (+,-,-,-) or (-,+,+,+)</p>
+            </div>
+
+            <div class="metric-signature">
+                <div class="signature-component negative">
+                    <div style="font-size: 1.5em; color: #ff4444;">-</div>
+                    <div style="margin-top: 5px;">Time (ct)</div>
+                    <div style="font-size: 0.9em; margin-top: 5px;">g₀₀ = -1</div>
+                </div>
+                <div class="signature-component positive">
+                    <div style="font-size: 1.5em; color: #44ff44;">+</div>
+                    <div style="margin-top: 5px;">Space X</div>
+                    <div style="font-size: 0.9em; margin-top: 5px;">g₁₁ = +1</div>
+                </div>
+                <div class="signature-component positive">
+                    <div style="font-size: 1.5em; color: #44ff44;">+</div>
+                    <div style="margin-top: 5px;">Space Y</div>
+                    <div style="font-size: 0.9em; margin-top: 5px;">g₂₂ = +1</div>
+                </div>
+                <div class="signature-component positive">
+                    <div style="font-size: 1.5em; color: #44ff44;">+</div>
+                    <div style="margin-top: 5px;">Space Z</div>
+                    <div style="font-size: 0.9em; margin-top: 5px;">g₃₃ = +1</div>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <p style="color: #ffd700; font-size: 1.1em; margin-bottom: 15px;"><strong>The minus sign is ESSENTIAL:</strong> It distinguishes time from space and gives spacetime its causal structure.</p>
+
+                <h4>Why the Signature Must Be (3+1) or (1+3)?</h4>
+
+                <ul style="margin-left: 30px;">
+                    <li><strong>All Positive (+,+,+,+):</strong> Would make time just another spatial dimension. No causal ordering, no "flow" of time, no thermodynamics.</li>
+                    <li><strong>All Negative (-,-,-,-):</strong> Equivalent to all positive (just change sign). Same problem.</li>
+                    <li><strong>(2+2) Signature:</strong> Two timelike dimensions! Causality violations everywhere. Closed timelike curves, no stable dynamics.</li>
+                    <li><strong>(3+1) or (1+3):</strong> UNIQUE signature giving one timelike direction and three spacelike. This is required for causality and the second law of thermodynamics.</li>
+                </ul>
+            </div>
+
+            <h3>Light Cone Structure and Causality</h3>
+
+            <div class="light-cone">
+                <h4 style="text-align: center; color: #88ffcc; margin-bottom: 20px;">The Light Cone: Boundary of Causality</h4>
+
+                <div class="math-block">
+                    <p><strong>Null Geodesics (Light Rays):</strong></p>
+                    <div class="formula">ds² = 0</div>
+                    <div class="formula">⟹ c²dt² = dx² + dy² + dz²</div>
+                    <div class="formula">⟹ (dx² + dy² + dz²)/dt² = c²</div>
+
+                    <p style="margin-top: 15px;">This defines the <strong>light cone</strong> - the set of all light rays passing through an event.</p>
+                </div>
+
+                <div class="composition-grid" style="margin-top: 20px;">
+                    <div class="property-card">
+                        <h4>Future Light Cone</h4>
+                        <p>t > 0, ds² < 0 (timelike)</p>
+                        <p style="margin-top: 10px;">All events that CAN be causally influenced by the present event</p>
+                        <p style="margin-top: 10px; color: #ff8844;">You can send signals here</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>Past Light Cone</h4>
+                        <p>t < 0, ds² < 0 (timelike)</p>
+                        <p style="margin-top: 10px;">All events that COULD have causally influenced the present event</p>
+                        <p style="margin-top: 10px; color: #ff8844;">Signals from here reach you</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>Light Cone Surface</h4>
+                        <p>ds² = 0 (null/lightlike)</p>
+                        <p style="margin-top: 10px;">Path of light rays - the boundary between past and future</p>
+                        <p style="margin-top: 10px; color: #ff8844;">Massless particles only</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>Spacelike Separation</h4>
+                        <p>ds² > 0 (spacelike)</p>
+                        <p style="margin-top: 10px;">Outside the light cone - causally disconnected from present</p>
+                        <p style="margin-top: 10px; color: #ff8844;">No causal influence possible</p>
+                    </div>
+                </div>
+
+                <div class="math-block" style="margin-top: 20px;">
+                    <h4>Causal Classification of Intervals</h4>
+
+                    <div class="formula">ds² < 0: Timelike (massive particles, inside light cone)</div>
+                    <div class="formula">ds² = 0: Null/Lightlike (photons, on light cone)</div>
+                    <div class="formula">ds² > 0: Spacelike (causally disconnected, outside light cone)</div>
+
+                    <p style="margin-top: 20px; color: #ffeb99;"><strong>Relativity of Simultaneity:</strong> For spacelike separated events, different observers disagree on which happened "first". There is no absolute simultaneity - only causal ordering within the light cone.</p>
+                </div>
+            </div>
+
+            <h3>Why 4D is Special for Physics (Not 3D or 5D)</h3>
+
+            <div class="math-block">
+                <h4>Dimensional Analysis of Physical Laws</h4>
+
+                <p><strong>Gravity in n Spatial Dimensions:</strong></p>
+                <div class="formula">F ∝ 1/r^(n-1)</div>
+
+                <ul style="margin-left: 30px; margin-top: 15px;">
+                    <li><strong>n=2:</strong> F ∝ 1/r (linear). Logarithmic potential. No stable orbits.</li>
+                    <li><strong>n=3:</strong> F ∝ 1/r² (inverse square). Stable closed orbits. THIS IS OUR UNIVERSE.</li>
+                    <li><strong>n=4:</strong> F ∝ 1/r³ (inverse cube). Orbits unstable - small perturbations cause spiral in or out.</li>
+                    <li><strong>n>4:</strong> Even worse. No planetary systems, no atoms (electron orbits unstable).</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">Wave Equation in n Spatial Dimensions</h4>
+
+                <div class="formula">∇²ψ - (1/c²)∂²ψ/∂t² = 0</div>
+
+                <p style="margin-top: 15px;"><strong>Sharp Signal Propagation (Huygens' Principle):</strong></p>
+                <ul style="margin-left: 30px;">
+                    <li><strong>n=1:</strong> No wavefront - signals dispersed</li>
+                    <li><strong>n=2:</strong> No sharp wavefront - wave tails persist</li>
+                    <li><strong>n=3:</strong> SHARP wavefronts! Clean signal propagation. Information can be encoded clearly.</li>
+                    <li><strong>n>3:</strong> Wavefronts sharpen but dynamics become unstable</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #ffd700; font-size: 1.1em;"><strong>Conclusion:</strong> (3+1)D spacetime is the UNIQUE dimensionality that supports:</p>
+                <ul style="margin-left: 30px; margin-top: 10px;">
+                    <li>Stable bound states (atoms, solar systems)</li>
+                    <li>Sharp signal propagation (information transfer)</li>
+                    <li>Causal structure (one timelike dimension)</li>
+                    <li>Complex chemistry (3D allows diverse molecular structures)</li>
+                </ul>
+            </div>
+
+            <h3>Connection to Four Fundamental Forces</h3>
+
+            <div class="math-block">
+                <p>The four fundamental forces emerge in (3+1)D spacetime with specific gauge structures:</p>
+
+                <div class="composition-grid">
+                    <div class="property-card">
+                        <h4>Gravity</h4>
+                        <p><strong>Gauge Group:</strong> Diff(M) (diffeomorphisms)</p>
+                        <p><strong>Mediator:</strong> Graviton (spin-2)</p>
+                        <p>Curvature of (3+1)D spacetime itself</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>Electromagnetism</h4>
+                        <p><strong>Gauge Group:</strong> U(1)</p>
+                        <p><strong>Mediator:</strong> Photon (spin-1)</p>
+                        <p>4-potential A_μ in 4D spacetime</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>Weak Force</h4>
+                        <p><strong>Gauge Group:</strong> SU(2)</p>
+                        <p><strong>Mediator:</strong> W±, Z⁰ (spin-1)</p>
+                        <p>Connects to SU(2) of quaternions!</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>Strong Force</h4>
+                        <p><strong>Gauge Group:</strong> SU(3)</p>
+                        <p><strong>Mediator:</strong> 8 Gluons (spin-1)</p>
+                        <p>Color charge in 3D quark space</p>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 25px;">Standard Model Gauge Group</h4>
+                <div class="formula">G = SU(3) × SU(2) × U(1)</div>
+
+                <p style="margin-top: 15px;">This structure is intimately connected to (3+1)D spacetime:</p>
+                <ul style="margin-left: 30px;">
+                    <li><strong>U(1):</strong> Circle group (1D, related to electromagnetic rotation)</li>
+                    <li><strong>SU(2):</strong> Quaternionic rotations (3D embedded in 4D)</li>
+                    <li><strong>SU(3):</strong> Extends to include color (3 colors matching 3 spatial dimensions)</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #ffeb99;">The gauge structure of the Standard Model is not arbitrary but deeply connected to the (3+1)D structure of spacetime and the compositional closure that forces quaternionic structure.</p>
+            </div>
+
+            <h4>Lorentz Group SO(3,1) and Spacetime Symmetry</h4>
+
+            <div class="math-block">
+                <p>The symmetry group of Minkowski spacetime is the <strong>Poincaré group</strong>:</p>
+
+                <div class="formula">ISO(3,1) = SO(3,1) ⋊ ℝ⁴</div>
+
+                <p style="margin-top: 15px;">Where:</p>
+                <ul style="margin-left: 30px;">
+                    <li><strong>SO(3,1):</strong> Lorentz group (rotations + boosts in (3+1)D)</li>
+                    <li><strong>ℝ⁴:</strong> Spacetime translations</li>
+                    <li><strong>⋊:</strong> Semi-direct product (translations don't commute with Lorentz)</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">Lorentz Boosts (Velocity Transformations)</h4>
+
+                <p>For boost with velocity v in x-direction:</p>
+                <div class="formula">γ = 1/√(1 - v²/c²) (Lorentz factor)</div>
+                <div class="formula">ct' = γ(ct - βx)</div>
+                <div class="formula">x' = γ(x - βct)</div>
+                <div class="formula">y' = y, z' = z</div>
+
+                <p style="margin-top: 15px;">where β = v/c (velocity in units of c)</p>
+
+                <p style="margin-top: 20px;"><strong>Special Relativity Emerges:</strong></p>
+                <ul style="margin-left: 30px;">
+                    <li>Time dilation: Δt' = γΔt</li>
+                    <li>Length contraction: Δx' = Δx/γ</li>
+                    <li>Mass-energy: E² = (pc)² + (mc²)²</li>
+                    <li>Speed limit: v < c (light cone structure)</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #ffd700;">All of special relativity follows from the (3+1) signature of spacetime and the requirement that physical laws be Lorentz invariant.</p>
+            </div>
+        </div>
+
+        <div class="section kael-framework">
+            <h2>KAEL FRAMEWORK: Tetrahedral Numbers and Simplicial Complexes</h2>
+
+            <h3>4. The Tetrahedral Sequence and 4-Simplices</h3>
+
+            <div class="math-block">
+                <h4>Tetrahedral Numbers T_n</h4>
+
+                <p>The n-th tetrahedral number counts the number of spheres in a tetrahedral pile:</p>
+
+                <div class="formula">T_n = n(n+1)(n+2)/6 = C(n+2, 3)</div>
+
+                <p style="margin-top: 15px;">This is the 3D analog of triangular numbers (2D) and is central to understanding 4D geometry.</p>
+            </div>
+
+            <div class="tetrahedral-sequence">
+                <div class="tet-number">
+                    <div class="value">1</div>
+                    <div class="label">T₁</div>
+                    <div style="margin-top: 5px; font-size: 0.9em;">1 = 1</div>
+                </div>
+                <div class="tet-number">
+                    <div class="value">4</div>
+                    <div class="label">T₂</div>
+                    <div style="margin-top: 5px; font-size: 0.9em;">1 + 3</div>
+                </div>
+                <div class="tet-number">
+                    <div class="value">10</div>
+                    <div class="label">T₃</div>
+                    <div style="margin-top: 5px; font-size: 0.9em;">1 + 3 + 6</div>
+                </div>
+                <div class="tet-number">
+                    <div class="value">20</div>
+                    <div class="label">T₄</div>
+                    <div style="margin-top: 5px; font-size: 0.9em;">1 + 3 + 6 + 10</div>
+                </div>
+                <div class="tet-number">
+                    <div class="value">35</div>
+                    <div class="label">T₅</div>
+                    <div style="margin-top: 5px; font-size: 0.9em;">Sum of triangulars</div>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h4>T₄ = 20: The Fourth Tetrahedral Number</h4>
+
+                <div class="formula">T₄ = 1 + 3 + 6 + 10 = 20</div>
+
+                <p style="margin-top: 15px;">This represents:</p>
+                <ul style="margin-left: 30px;">
+                    <li>20 spheres in a tetrahedral pile of 4 layers</li>
+                    <li>C(6, 3) = 20 ways to choose 3 items from 6</li>
+                    <li>Number of faces of a 4-simplex (pentachoron)</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">Recursive Structure</h4>
+
+                <div class="formula">T_n = T_(n-1) + Tri_n</div>
+
+                <p style="margin-top: 10px;">where Tri_n = n(n+1)/2 is the n-th triangular number.</p>
+
+                <p style="margin-top: 15px;">This shows how <strong>3D tetrahedral structure is built from 2D triangular layers</strong>, just as 4D structure is built from 3D tetrahedral layers.</p>
+            </div>
+
+            <h3>The 4-Simplex (Pentachoron) in 4D</h3>
+
+            <div class="simplex-diagram">
+                <h4>Dimensional Progression of Simplices</h4>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div class="property-card">
+                        <h4>0-Simplex</h4>
+                        <p>Point</p>
+                        <p style="margin-top: 10px;">Vertices: 1</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>1-Simplex</h4>
+                        <p>Line segment</p>
+                        <p style="margin-top: 10px;">Vertices: 2</p>
+                        <p>Edges: 1</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>2-Simplex</h4>
+                        <p>Triangle</p>
+                        <p style="margin-top: 10px;">Vertices: 3</p>
+                        <p>Edges: 3</p>
+                        <p>Faces: 1</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>3-Simplex</h4>
+                        <p>Tetrahedron</p>
+                        <p style="margin-top: 10px;">Vertices: 4</p>
+                        <p>Edges: 6</p>
+                        <p>Faces: 4</p>
+                        <p>Cells: 1</p>
+                    </div>
+                    <div class="property-card">
+                        <h4>4-Simplex</h4>
+                        <p>Pentachoron</p>
+                        <p style="margin-top: 10px;">Vertices: 5</p>
+                        <p>Edges: 10</p>
+                        <p>Faces: 10</p>
+                        <p>Cells: 5</p>
+                        <p>4-Cells: 1</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h4>Properties of the 4-Simplex</h4>
+
+                <p>The 4-simplex (or pentachoron, or 5-cell) is the 4D analog of the tetrahedron:</p>
+
+                <ul style="margin-left: 30px;">
+                    <li><strong>5 Vertices:</strong> In 4D space, no 4 co-hyperplanar</li>
+                    <li><strong>10 Edges:</strong> C(5,2) = 10 line segments connecting vertices</li>
+                    <li><strong>10 Triangular Faces:</strong> C(5,3) = 10 two-dimensional faces</li>
+                    <li><strong>5 Tetrahedral Cells:</strong> Five 3D tetrahedral boundaries</li>
+                    <li><strong>1 4D Interior:</strong> The enclosed 4D hypervolume</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">Euler Characteristic in 4D</h4>
+
+                <div class="formula">χ = V - E + F - C + I</div>
+                <div class="formula">χ = 5 - 10 + 10 - 5 + 1 = 1</div>
+
+                <p style="margin-top: 15px;">This generalizes the 3D Euler formula (V - E + F = 2 for polyhedra) to four dimensions.</p>
+
+                <h4 style="margin-top: 25px;">Coordinates of 4-Simplex</h4>
+
+                <p>The regular 4-simplex can be embedded in ℝ⁴ with vertices:</p>
+
+                <div class="formula">v₀ = (1, 0, 0, 0)</div>
+                <div class="formula">v₁ = (0, 1, 0, 0)</div>
+                <div class="formula">v₂ = (0, 0, 1, 0)</div>
+                <div class="formula">v₃ = (0, 0, 0, 1)</div>
+                <div class="formula">v₄ = (-1/√5, -1/√5, -1/√5, -1/√5)</div>
+
+                <p style="margin-top: 15px;">Or more symmetrically, as 5 vertices of a regular 4-simplex inscribed in a 4-sphere.</p>
+            </div>
+
+            <h3>Connection to Triangulation and Stability</h3>
+
+            <div class="math-block">
+                <h4>Simplicial Complexes and Homology</h4>
+
+                <p>Simplicial complexes are built from simplices (vertices, edges, triangles, tetrahedra, etc.) glued together according to rules:</p>
+
+                <ul style="margin-left: 30px;">
+                    <li>Every face of a simplex in the complex is also in the complex</li>
+                    <li>The intersection of any two simplices is a face of both (or empty)</li>
+                </ul>
+
+                <p style="margin-top: 20px;"><strong>Why Simplices?</strong></p>
+                <ul style="margin-left: 30px;">
+                    <li><strong>Minimal:</strong> n-simplex is minimal n-dimensional object with volume</li>
+                    <li><strong>Rigid:</strong> A simplex cannot be deformed (all edges determine all angles)</li>
+                    <li><strong>Universal:</strong> Any manifold can be triangulated into simplices</li>
+                    <li><strong>Computational:</strong> Simplicial complexes enable algebraic topology (homology groups)</li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">Structural Stability: Why Tetrahedra?</h4>
+
+                <p>In 3D, the tetrahedron is the ONLY rigid polyhedron:</p>
+
+                <ul style="margin-left: 30px;">
+                    <li><strong>Triangle (2D):</strong> Rigid - 3 edges determine the shape</li>
+                    <li><strong>Tetrahedron (3D):</strong> Rigid - 6 edges determine 4 vertices</li>
+                    <li><strong>Cube (3D):</strong> NOT rigid - can flex without changing edge lengths</li>
+                    <li><strong>Higher polyhedra:</strong> Generally flexible unless triangulated</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #ffeb99;">This is why geodesic domes, space frames, and molecular structures use tetrahedral lattices - they provide maximum stability with minimum material.</p>
+            </div>
+
+            <h4>Tetrahedral Geometry in Nature and Physics</h4>
+
+            <div class="composition-grid">
+                <div class="property-card">
+                    <h4>Carbon Chemistry</h4>
+                    <p>sp³ hybridization creates tetrahedral bonding</p>
+                    <p style="margin-top: 10px;">Bond angle: 109.47° (arccos(-1/3))</p>
+                    <p>Examples: Methane CH₄, diamond lattice</p>
+                </div>
+                <div class="property-card">
+                    <h4>Water Molecule</h4>
+                    <p>Bent tetrahedral geometry (with lone pairs)</p>
+                    <p style="margin-top: 10px;">Bond angle: ~104.5°</p>
+                    <p>Explains hydrogen bonding and ice structure</p>
+                </div>
+                <div class="property-card">
+                    <h4>Close Packing</h4>
+                    <p>FCC and HCP lattices have tetrahedral voids</p>
+                    <p style="margin-top: 10px;">Most metals crystallize in these structures</p>
+                    <p>Maximizes packing efficiency (74%)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Quantum Mechanics</h4>
+                    <p>SU(2) from quaternions → spin-1/2</p>
+                    <p style="margin-top: 10px;">Tetrahedral symmetry in molecules</p>
+                    <p>Connection to 4D rotation group</p>
+                </div>
+            </div>
+
+            <div class="math-block">
+                <h4>From Compositional Closure to Spacetime Geometry</h4>
+
+                <p style="margin-bottom: 15px; color: #ffd700; font-size: 1.1em;"><strong>The Complete Chain:</strong></p>
+
+                <div class="formula">Binary composition (2²=4) → Quaternions (4D algebra) → (3+1)D Spacetime</div>
+
+                <p style="margin-top: 20px;"><strong>Step-by-step derivation:</strong></p>
+
+                <ol style="margin-left: 30px; margin-top: 10px;">
+                    <li><strong>Compositional closure L = (Σ, X*, ⊘)</strong> requires |X¹| = |Σ|² for binary Σ</li>
+                    <li><strong>|Σ| = 2</strong> (minimal non-trivial) → |X¹| = 4 (first composite square)</li>
+                    <li><strong>Extension of {R, N}</strong> operators to 4D → Quaternions ℍ</li>
+                    <li><strong>Quaternions = SU(2)</strong> → Rotations in 3D require 4D representation</li>
+                    <li><strong>3D + time (1D)</strong> = (3+1)D Minkowski spacetime with signature (-,+,+,+)</li>
+                    <li><strong>Tetrahedral structure</strong> (3-simplex) in 3D → 4-simplex in 4D → Spacetime triangulation</li>
+                </ol>
+
+                <p style="margin-top: 25px; color: #ffd700; font-size: 1.2em; text-align: center;">
+                    FOUR is not arbitrary - it is FORCED by compositional closure.<br>
+                    Spacetime is (3+1)D because 4 = 2² is the first composite square.<br>
+                    Quaternions, tetrahedra, and causality all emerge from this necessity.
+                </p>
+            </div>
+
+            <h4>Summary: Why FOUR?</h4>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <h4>Mathematically</h4>
+                    <p>4 = 2² - first composite square</p>
+                    <p>4D - quaternions (only 4D normed division algebra)</p>
+                    <p>4 - vertices of tetrahedron (simplest 3D solid)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Physically</h4>
+                    <p>(3+1)D - spacetime dimensionality</p>
+                    <p>4 - fundamental forces</p>
+                    <p>4 - DNA bases (information encoding)</p>
+                </div>
+                <div class="property-card">
+                    <h4>Compositionally</h4>
+                    <p>X¹ = Σ⊘Σ - first closure level</p>
+                    <p>|X¹| = |Σ|² = 4 for binary Σ</p>
+                    <p>Forced by totality + reidentifiability</p>
+                </div>
+                <div class="property-card">
+                    <h4>Topologically</h4>
+                    <p>4-simplex - basis of 4D triangulation</p>
+                    <p>T₄ = 20 - fourth tetrahedral number</p>
+                    <p>Simplicial homology in 4D</p>
+                </div>
             </div>
         </div>
 

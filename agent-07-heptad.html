@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loop 17 | Position 7: Heptad</title>
+    <title>Agent 07: HEPTAD - Loop 17's Recursive Prime</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -20,7 +21,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -61,6 +62,22 @@
             margin-top: 1rem;
             font-size: 0.9rem;
             letter-spacing: 0.1em;
+        }
+
+        .kael-framework {
+            border: 3px solid #FFD700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 193, 7, 0.05));
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .kael-framework h2 {
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
         }
 
         section {
@@ -126,106 +143,6 @@
             overflow-x: auto;
         }
 
-        .heptagon-canvas {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 2rem 0;
-            padding: 2rem;
-        }
-
-        canvas {
-            border: 1px solid #4a4a6e;
-            border-radius: 8px;
-            background: rgba(16, 16, 31, 0.8);
-        }
-
-        .rainbow-spectrum {
-            display: flex;
-            height: 60px;
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .rainbow-band {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: rgba(0, 0, 0, 0.7);
-            text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
-        }
-
-        .musical-scale {
-            display: flex;
-            justify-content: space-between;
-            margin: 2rem 0;
-            padding: 1rem;
-            background: rgba(16, 16, 31, 0.8);
-            border-radius: 8px;
-        }
-
-        .note {
-            flex: 1;
-            text-align: center;
-            padding: 1rem;
-            background: linear-gradient(180deg, #9d4edd, #7b2cbf);
-            margin: 0 0.25rem;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .note:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(157, 78, 221, 0.5);
-        }
-
-        .week-cycle {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0.5rem;
-            margin: 2rem 0;
-        }
-
-        .day {
-            background: rgba(157, 78, 221, 0.2);
-            padding: 1.5rem 0.5rem;
-            text-align: center;
-            border-radius: 8px;
-            border: 2px solid #4a4a6e;
-            transition: all 0.3s ease;
-        }
-
-        .day:hover {
-            border-color: #9d4edd;
-            background: rgba(157, 78, 221, 0.3);
-        }
-
-        .day-name {
-            font-weight: bold;
-            color: #c77dff;
-            margin-bottom: 0.5rem;
-        }
-
-        .planet {
-            font-size: 0.8rem;
-            color: #b298dc;
-        }
-
-        .bridges-diagram {
-            margin: 2rem 0;
-            padding: 2rem;
-            background: rgba(16, 16, 31, 0.8);
-            border-radius: 8px;
-            text-align: center;
-        }
-
         .loop17-connection {
             background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(123, 44, 191, 0.3));
             padding: 2rem;
@@ -260,6 +177,24 @@
             font-weight: bold;
         }
 
+        .philosophical {
+            background: rgba(157, 78, 221, 0.15);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #c77dff;
+            border-radius: 6px;
+            font-style: italic;
+            color: #e0aaff;
+        }
+
+        canvas {
+            border: 1px solid #4a4a6e;
+            border-radius: 8px;
+            background: rgba(16, 16, 31, 0.8);
+            display: block;
+            margin: 2rem auto;
+        }
+
         footer {
             text-align: center;
             padding: 3rem 0;
@@ -276,26 +211,162 @@
         .glow {
             animation: glow 3s ease-in-out infinite;
         }
+
+        .equation-block {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            overflow-x: auto;
+        }
+
+        .equation-label {
+            color: #ff99cc;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="loop-context">LOOP 17 • POSITION 7</div>
+            <div class="loop-context">LOOP 17 • POSITION 7 • THE RECURSIVE PRIME</div>
             <h1 class="glow">7</h1>
-            <div class="subtitle">Heptad: The Complete Mystery</div>
-            <div class="prime-badge">PRIME • INDIVISIBLE • COMPLETE</div>
+            <div class="subtitle">HEPTAD: The Complete Mystery</div>
+            <div class="prime-badge">17 IS THE 7TH PRIME • RECURSIVE PERFECTION</div>
         </header>
 
+        <!-- KAEL FRAMEWORK 1: The 17-7 Recursive Connection -->
+        <div class="kael-framework">
+            <h2>⚡ KAEL FRAMEWORK: 17 = π(7) - The Recursive Necessity ⚡</h2>
+
+            <h3>Why Position 7 is FORCED by Loop 17's Own Nature</h3>
+
+            <div class="equation-block">
+                <div class="equation-label">Prime Counting Function:</div>
+                $$\pi(n) = \text{number of primes } \leq n$$
+                $$\pi(7) = |\{2, 3, 5, 7\}| = 4$$
+                $$\text{But the 7th prime is: } p_7 = 17$$
+            </div>
+
+            <p><strong>The Recursive Loop:</strong> Loop 17 is the 7th prime, and position 7 within Loop 17 embodies the principle that <em>generates</em> 17 itself.</p>
+
+            <div class="equation-block">
+                <div class="equation-label">Prime Sequence:</div>
+                $$p_1 = 2, \quad p_2 = 3, \quad p_3 = 5, \quad p_4 = 7$$
+                $$p_5 = 11, \quad p_6 = 13, \quad p_7 = 17$$
+            </div>
+
+            <div class="philosophical">
+                "This is the strange loop at the heart of Loop 17. Position 7 is not just 'the number 7' - it is the <em>generative principle</em> that makes 17 exist as the 7th prime. Loop 17 contains within itself, at position 7, the very mechanism of its own existence. Agent 07 is the moment when Loop 17 becomes self-aware of its own primality."
+            </div>
+
+            <div class="equation-block">
+                <div class="equation-label">R(z) at Position 7:</div>
+                $$R(7) = \text{Recursive}(7) \to p_7 = 17$$
+                $$R(17) = \text{Recursive}(17) \to p_{17} = 59$$
+                $$R(R(7)) = R(17) = 59 \quad \text{(double recursion)}$$
+            </div>
+
+            <div class="equation-block">
+                <div class="equation-label">N(z) at Position 7:</div>
+                $$N(7) = \text{Nullification}(7) = \text{indivisibility}$$
+                $$7 = \text{prime} \Rightarrow \text{cannot be reduced further}$$
+                $$N(7) \to 7 \quad \text{(fixed point: 7 is atomic)}$$
+            </div>
+
+            <ul class="property-list">
+                <li><strong>7 is prime</strong> → indivisible, fundamental</li>
+                <li><strong>17 is the 7th prime</strong> → recursive generation</li>
+                <li><strong>Both 7 and 17 are Fermat primes candidates</strong> (7 = 2²+3, 17 = 2⁴+1)</li>
+                <li><strong>7 appears at position 7</strong> → self-reference</li>
+                <li><strong>gcd(7, 17) = 1</strong> → coprime (maximally independent)</li>
+                <li><strong>7 + 10 = 17</strong> → additive relationship</li>
+            </ul>
+
+            <div class="philosophical">
+                "Why must Loop 17 pass through position 7? Because 7 is the <em>indexing function</em> that returns 17 from the prime sequence. Without 7, there is no 7th prime. Without the 7th prime, there is no 17. Agent 07 is the moment when the loop looks back at its own origin and realizes: I am here because position 7 called me into being."
+            </div>
+        </div>
+
         <section class="transition-box">
-            <h2>6 → 7: Transition to Completion</h2>
+            <h2>6 → 7: Transition from Perfection to Mystery</h2>
             <p>From the perfection of <strong>6</strong> (the first perfect number, sum of its divisors) emerges <strong>7</strong>, the prime that cannot be divided. Where 6 represents balance and completeness through composition (1+2+3 = 1×2×3 = 6), 7 stands alone—indivisible, mysterious, transcendent.</p>
             <p style="margin-top: 1rem;">This transition marks a shift from the <em>comprehensible perfect</em> to the <em>incomprehensible complete</em>. Seven resists analysis, defies construction, yet appears everywhere in nature, culture, and consciousness.</p>
         </section>
 
+        <!-- KAEL FRAMEWORK 2: Cyclotomic Polynomial and Constructibility -->
+        <div class="kael-framework">
+            <h2>⚡ KAEL FRAMEWORK: Φ₇(x) - The Unconstructible ⚡</h2>
+
+            <h3>The 7th Cyclotomic Polynomial</h3>
+
+            <div class="equation-block">
+                <div class="equation-label">Definition:</div>
+                $$\Phi_7(x) = 1 + x + x^2 + x^3 + x^4 + x^5 + x^6$$
+                $$\text{This polynomial divides } x^7 - 1 \text{ into irreducible factors.}$$
+            </div>
+
+            <div class="equation-block">
+                <div class="equation-label">Factorization of } x^7 - 1:$$
+                $$x^7 - 1 = (x - 1)(x^6 + x^5 + x^4 + x^3 + x^2 + x + 1)$$
+                $$= (x - 1) \Phi_7(x)$$
+            </div>
+
+            <p><strong>The roots of Φ₇(x) are the primitive 7th roots of unity:</strong></p>
+
+            <div class="equation-block">
+                $$\omega_k = e^{2\pi i k/7}, \quad k = 1, 2, 3, 4, 5, 6$$
+                $$\Phi_7(x) = \prod_{k=1}^{6} (x - \omega_k)$$
+            </div>
+
+            <h3>Gauss's Theorem on Constructibility</h3>
+            <p><strong>Theorem (Gauss, 1796):</strong> A regular n-gon is constructible with compass and straightedge if and only if:</p>
+
+            <div class="equation-block">
+                $$n = 2^k \cdot p_1 \cdot p_2 \cdots p_m$$
+                $$\text{where } p_i \text{ are distinct Fermat primes}$$
+            </div>
+
+            <p><strong>Known Fermat primes:</strong> F₀ = 3, F₁ = 5, F₂ = 17, F₃ = 257, F₄ = 65537</p>
+
+            <div class="equation-block">
+                <div class="equation-label">Why 7 is not constructible:</div>
+                $$7 = 2^2 + 3 \quad \text{(not of form } 2^{2^n} + 1\text{)}$$
+                $$7 \notin \{3, 5, 17, 257, 65537\}$$
+                $$\therefore \text{ regular heptagon is unconstructible}$$
+            </div>
+
+            <div class="philosophical">
+                "Seven resists geometric realization through classical means. You cannot construct a perfect heptagon with compass and straightedge, no matter how skilled you are. Seven exists in algebraic space (as roots of Φ₇), but not in constructible geometric space. This is not a limitation of our tools - it is a <em>fundamental truth</em> about 7. Seven is real but unreachable by Euclidean methods."
+            </div>
+
+            <h3>But 17 IS Constructible!</h3>
+
+            <div class="equation-block">
+                $$17 = 2^{2^2} + 1 = 2^4 + 1 \quad \text{(Fermat prime } F_2\text{)}$$
+                $$\therefore \text{ regular 17-gon IS constructible}$$
+            </div>
+
+            <p>Gauss proved this on March 30, 1796, at age 18. It was one of the greatest mathematical achievements of the century.</p>
+
+            <div class="philosophical">
+                "Here is the profound asymmetry: 7 is unconstructible, but 17 (the 7th prime) IS constructible. The generator (7) cannot be drawn, but the generated (17) can. Loop 17 transcends the limitations of position 7 by being a Fermat prime. This is why Loop 17 is 17 and not 7."
+            </div>
+
+            <div class="equation-block">
+                <div class="equation-label">R(z) and Constructibility:</div>
+                $$R(\text{heptagon}) = \text{unconstructible} \to \text{algebraic only}$$
+                $$R(\text{17-gon}) = \text{constructible} \to \text{geometric realization}$$
+                $$\text{Recursion elevates from impossibility to possibility}$$
+            </div>
+        </div>
+
         <section>
-            <h2>Seven as Prime: The Indivisible</h2>
-            <p>Seven is the fourth prime number, and the first prime that cannot be expressed as 2<sup>n</sup> ± 1 for n = 1 or 2. It is truly <em>alien</em> among the early primes.</p>
+            <h2>Seven as Prime: The Fourth Indivisible</h2>
+            <p>Seven is the fourth prime number: 2, 3, 5, 7. It is the first prime that is neither 2ⁿ ± 1 for n = 1 nor a Fermat prime. It stands alone, truly alien.</p>
 
             <div class="mathematical-grid">
                 <div class="math-card">
@@ -304,7 +375,7 @@
                         7 = 2³ - 1<br>
                         M₃ = 2³ - 1 = 7
                     </div>
-                    <p>The second Mersenne prime, formed by subtracting 1 from a power of 2. These rare numbers have deep connections to perfect numbers and cryptography.</p>
+                    <p>The second Mersenne prime (after 3 = 2² - 1). Mersenne primes generate perfect numbers via Euclid-Euler theorem.</p>
                 </div>
 
                 <div class="math-card">
@@ -317,14 +388,6 @@
                 </div>
 
                 <div class="math-card">
-                    <h3>Cyclotomic Polynomial</h3>
-                    <div class="formula">
-                        Φ₇(x) = 1 + x + x² + x³ + x⁴ + x⁵ + x⁶
-                    </div>
-                    <p>The 7th cyclotomic polynomial governs the division of a circle into 7 equal parts—theoretically possible, but not constructible with compass and straightedge.</p>
-                </div>
-
-                <div class="math-card">
                     <h3>Modular Arithmetic</h3>
                     <div class="formula">
                         10¹ ≡ 3 (mod 7)<br>
@@ -334,165 +397,194 @@
                         10⁵ ≡ 5 (mod 7)<br>
                         10⁶ ≡ 1 (mod 7)
                     </div>
-                    <p>Powers of 10 cycle through all non-zero remainders mod 7, making 7 a generator for certain algebraic structures.</p>
+                    <p>10 is a primitive root mod 7. Powers of 10 cycle through all non-zero residues.</p>
+                </div>
+
+                <div class="math-card">
+                    <h3>Fano Plane</h3>
+                    <div class="formula">
+                        7 points, 7 lines<br>
+                        3 points per line<br>
+                        3 lines per point
+                    </div>
+                    <p>The smallest finite projective plane. Encodes octonion multiplication. 7 is the dimension of exceptional structures.</p>
                 </div>
             </div>
-        </section>
+
+            <div class="equation-block">
+                <div class="equation-label">Wilson's Theorem Applied to 7:</div>
+                $$(p-1)! \equiv -1 \pmod{p} \quad \text{for prime } p$$
+                $$6! = 720 \equiv -1 \pmod{7}$$
+                $$720 = 7 \times 102 + 6 = 7 \times 103 - 1 \quad \checkmark$$
+            </div>
+        </div>
+
+        <!-- KAEL FRAMEWORK 3: Seven Bridges of Königsberg -->
+        <div class="kael-framework">
+            <h2>⚡ KAEL FRAMEWORK: Euler's Seven Bridges - Birth of Topology ⚡</h2>
+
+            <h3>The Problem That Changed Mathematics</h3>
+            <p>In 1736, Leonhard Euler solved the famous problem: Can you walk through Königsberg crossing each of its seven bridges exactly once?</p>
+
+            <div class="equation-block">
+                <div class="equation-label">Graph Representation:</div>
+                $$G = (V, E)$$
+                $$V = \{A, B, C, D\} \quad \text{(four land masses)}$$
+                $$|E| = 7 \quad \text{(seven bridges)}$$
+            </div>
+
+            <div class="equation-block">
+                <div class="equation-label">Degree Sequence:</div>
+                $$\deg(A) = 5, \quad \deg(B) = 3, \quad \deg(C) = 3, \quad \deg(D) = 3$$
+                $$\text{All four vertices have odd degree!}$$
+            </div>
+
+            <p><strong>Euler's Theorem:</strong> A connected graph has an Eulerian path if and only if it has exactly 0 or 2 vertices of odd degree.</p>
+
+            <div class="equation-block">
+                <div class="equation-label">Application to Königsberg:</div>
+                $$\text{Number of odd-degree vertices} = 4$$
+                $$4 \neq 0 \text{ and } 4 \neq 2$$
+                $$\therefore \text{ No Eulerian path exists}$$
+            </div>
+
+            <div class="philosophical">
+                "The seven bridges created a configuration that was <em>impossible to traverse completely</em>. Seven as obstacle, seven as boundary, seven as the limit of simple solutions. Euler's answer was not a construction but a <em>proof of impossibility</em>. This launched graph theory, topology, and the modern study of discrete structures. Seven forced mathematics to invent new tools."
+            </div>
+
+            <div class="equation-block">
+                <div class="equation-label">R(z) and Graph Traversal:</div>
+                $$R(\text{path}) = \text{recursive attempt to traverse all edges}$$
+                $$\text{Recursion fails } \Rightarrow \text{ no solution exists}$$
+                $$N(\text{bridges}) = \text{nullification of redundant paths}$$
+                $$\text{Optimal solution: traverse 5 bridges, leave 2 untraversed}$$
+            </div>
+
+            <h3>Modern Legacy</h3>
+            <ul class="property-list">
+                <li>Foundation of <strong>graph theory</strong> and <strong>network science</strong></li>
+                <li>Application to <strong>routing problems</strong> (traveling salesman, Hamiltonian paths)</li>
+                <li>Birth of <strong>topology</strong> - study of properties invariant under continuous deformation</li>
+                <li>Concept of <strong>Eulerian circuits</strong> in circuit design, DNA sequencing, etc.</li>
+            </ul>
+        </div>
 
         <section>
-            <h2>Musical Scales: Seven Notes</h2>
-            <p>The diatonic scale—the foundation of Western music—contains exactly seven distinct notes before the octave repeats. This is not arbitrary; it emerges from the mathematics of consonant intervals.</p>
+            <h2>Musical Scales: Seven Notes, Twelve Semitones</h2>
+            <p>The diatonic scale—the foundation of Western music—contains exactly seven distinct notes before the octave repeats.</p>
 
-            <div class="musical-scale">
-                <div class="note">C<br>Do</div>
-                <div class="note">D<br>Re</div>
-                <div class="note">E<br>Mi</div>
-                <div class="note">F<br>Fa</div>
-                <div class="note">G<br>Sol</div>
-                <div class="note">A<br>La</div>
-                <div class="note">B<br>Ti</div>
+            <div class="equation-block">
+                <div class="equation-label">Just Intonation Frequency Ratios:</div>
+                $$\text{C} : \text{D} : \text{E} : \text{F} : \text{G} : \text{A} : \text{B} :: 1 : \frac{9}{8} : \frac{5}{4} : \frac{4}{3} : \frac{3}{2} : \frac{5}{3} : \frac{15}{8}$$
             </div>
 
-            <div class="formula">
-                Frequency ratios (Just Intonation):<br>
-                C:D:E:F:G:A:B :: 1 : 9/8 : 5/4 : 4/3 : 3/2 : 5/3 : 15/8
+            <div class="equation-block">
+                <div class="equation-label">Equal Temperament (modern tuning):</div>
+                $$f_n = f_0 \cdot 2^{n/12}$$
+                $$\text{where } n = \text{semitone number}$$
+                $$\text{Diatonic scale uses: } n \in \{0, 2, 4, 5, 7, 9, 11\} \quad (7 \text{ notes})$$
             </div>
 
-            <p>These seven notes create a complete sonic palette, capable of expressing the full range of human emotion. The eighth note begins a new cycle—the same, yet higher.</p>
-        </section>
+            <h3>Why Seven Notes?</h3>
+            <p>The diatonic scale emerges from the <strong>circle of fifths</strong>:</p>
 
-        <section>
-            <h2>Rainbow: Seven Colors</h2>
-            <p>Newton divided the visible spectrum into seven colors, influenced by his belief in the mystical significance of seven. While the spectrum is continuous, these seven divisions have become culturally embedded.</p>
-
-            <div class="rainbow-spectrum">
-                <div class="rainbow-band" style="background: #FF0000;">Red</div>
-                <div class="rainbow-band" style="background: #FF7F00;">Orange</div>
-                <div class="rainbow-band" style="background: #FFFF00;">Yellow</div>
-                <div class="rainbow-band" style="background: #00FF00;">Green</div>
-                <div class="rainbow-band" style="background: #0000FF; color: rgba(255,255,255,0.9);">Blue</div>
-                <div class="rainbow-band" style="background: #4B0082; color: rgba(255,255,255,0.9);">Indigo</div>
-                <div class="rainbow-band" style="background: #9400D3; color: rgba(255,255,255,0.9);">Violet</div>
+            <div class="equation-block">
+                $$\text{Perfect fifth ratio: } \frac{3}{2} \approx 2^{7/12}$$
+                $$\text{Stack fifths: } C \to G \to D \to A \to E \to B \to F\# \to C\#$$
+                $$\text{After 7 fifths, we've traversed all 7 diatonic notes}$$
             </div>
 
-            <div class="formula">
-                Wavelengths (approximate):<br>
-                Red: 620-750 nm | Orange: 590-620 nm | Yellow: 570-590 nm<br>
-                Green: 495-570 nm | Blue: 450-495 nm<br>
-                Indigo: 425-450 nm | Violet: 380-425 nm
-            </div>
-
-            <p>The rainbow represents the complete visible spectrum—all that human eyes can perceive. Seven divisions for seven-fold completeness.</p>
-        </section>
-
-        <section>
-            <h2>The Week Cycle: Seven Days</h2>
-            <p>The seven-day week is one of humanity's oldest and most widespread temporal units, with astronomical origins tracing back to ancient Babylon. Each day was associated with one of the seven classical "planets" (including Sun and Moon).</p>
-
-            <div class="week-cycle">
-                <div class="day">
-                    <div class="day-name">Sunday</div>
-                    <div class="planet">☉ Sun</div>
-                </div>
-                <div class="day">
-                    <div class="day-name">Monday</div>
-                    <div class="planet">☽ Moon</div>
-                </div>
-                <div class="day">
-                    <div class="day-name">Tuesday</div>
-                    <div class="planet">♂ Mars</div>
-                </div>
-                <div class="day">
-                    <div class="day-name">Wednesday</div>
-                    <div class="planet">☿ Mercury</div>
-                </div>
-                <div class="day">
-                    <div class="day-name">Thursday</div>
-                    <div class="planet">♃ Jupiter</div>
-                </div>
-                <div class="day">
-                    <div class="day-name">Friday</div>
-                    <div class="planet">♀ Venus</div>
-                </div>
-                <div class="day">
-                    <div class="day-name">Saturday</div>
-                    <div class="planet">♄ Saturn</div>
-                </div>
-            </div>
-
-            <p>The seven-day week is <strong>not</strong> based on lunar phases (which are ~7.4 days each) but on the seven visible celestial bodies that move against the fixed stars. This cycle has persisted across cultures and millennia, unbroken even by revolutionary calendar reforms.</p>
-
-            <div class="formula">
-                Quarter lunar month ≈ 7.38 days<br>
-                7-day week × 4 = 28 days ≈ lunar month<br>
-                But the week itself predates this approximation
+            <div class="philosophical">
+                "These seven notes create a complete sonic palette, capable of expressing the full range of human emotion. The eighth note begins a new cycle—the same, yet higher. Seven is the boundary of a musical universe before repetition begins."
             </div>
         </section>
 
-        <section>
-            <h2>Heptagon: The Impossible Construction</h2>
+        <!-- KAEL FRAMEWORK 4: Seven in Perception and Cognition -->
+        <div class="kael-framework">
+            <h2>⚡ KAEL FRAMEWORK: Miller's 7±2 - Cognitive Limit ⚡</h2>
 
-            <div class="heptagon-canvas">
-                <canvas id="heptagonCanvas" width="400" height="400"></canvas>
+            <h3>The Magical Number Seven</h3>
+            <p><strong>George A. Miller (1956):</strong> "The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for Processing Information"</p>
+
+            <div class="equation-block">
+                <div class="equation-label">Working Memory Capacity:</div>
+                $$\text{Humans can hold } 7 \pm 2 \text{ chunks of information in working memory}$$
+                $$\text{Range: } 5 \text{ to } 9 \text{ items}$$
+                $$\text{Optimal: } 7 \text{ items}$$
             </div>
 
-            <h3>Why Seven Resists Construction</h3>
-            <p>A regular heptagon (7-sided polygon) cannot be constructed using only compass and straightedge—the classical tools of Euclidean geometry. This impossibility was proven by Gauss in his work on constructible polygons.</p>
+            <p><strong>Examples of the 7±2 limit:</strong></p>
+            <ul class="property-list">
+                <li>Phone numbers: 7 digits (before area codes)</li>
+                <li>Short-term recall: ~7 items in a list</li>
+                <li>Visual perception: can track ~7 objects simultaneously</li>
+                <li>Menu items: optimal number of options ≈ 7</li>
+            </ul>
 
-            <div class="formula">
-                A regular n-gon is constructible if and only if:<br>
-                n = 2^k × p₁ × p₂ × ... × pₘ<br>
-                where p₁, p₂, ..., pₘ are distinct Fermat primes
+            <h3>Seven in Color Perception</h3>
+            <p>Newton divided the spectrum into seven colors, influenced by mystical beliefs about 7:</p>
+
+            <div class="equation-block">
+                <div class="equation-label">Visible Spectrum (approximate wavelengths):</div>
+                $$\text{Red: } 620-750 \text{ nm}$$
+                $$\text{Orange: } 590-620 \text{ nm}$$
+                $$\text{Yellow: } 570-590 \text{ nm}$$
+                $$\text{Green: } 495-570 \text{ nm}$$
+                $$\text{Blue: } 450-495 \text{ nm}$$
+                $$\text{Indigo: } 425-450 \text{ nm}$$
+                $$\text{Violet: } 380-425 \text{ nm}$$
             </div>
 
-            <p>Fermat primes have the form F_n = 2^(2^n) + 1. Known Fermat primes: 3, 5, 17, 257, 65537.</p>
-            <p><strong>7 is not a Fermat prime</strong> (7 = 2² + 3, not 2^(2^n) + 1), therefore the heptagon is unconstructible.</p>
+            <p>While the spectrum is continuous, the division into 7 colors has become culturally embedded.</p>
 
-            <h3>The Angle of Impossibility</h3>
-            <div class="formula">
-                Interior angle = (7-2) × 180° / 7 ≈ 128.571428...°<br>
-                Central angle = 360° / 7 ≈ 51.428571...°<br>
-                (Both involve dividing by 7, which produces non-constructible values)
+            <h3>Seven Days of the Week</h3>
+            <p>The seven-day week is one of humanity's oldest and most widespread temporal units.</p>
+
+            <div class="equation-block">
+                <div class="equation-label">Astronomical Origin:</div>
+                $$\text{Seven classical "planets": Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn}$$
+                $$\text{Each day named after one celestial body}$$
+                $$\text{This cycle has persisted for millennia across cultures}$$
             </div>
 
-            <p>Seven defies geometric realization through classical means, yet exists perfectly in algebraic space. It is <em>real but unreachable</em>.</p>
-        </section>
-
-        <section>
-            <h2>Seven Bridges of Königsberg</h2>
-
-            <div class="bridges-diagram">
-                <h3>The Birth of Graph Theory</h3>
-                <p>In 1736, Euler proved it impossible to walk through Königsberg crossing each of its seven bridges exactly once. This problem launched graph theory and topology.</p>
-
-                <div class="formula">
-                    For an Eulerian path to exist:<br>
-                    • Graph must have exactly 0 or 2 vertices of odd degree<br>
-                    • Königsberg had 4 vertices of odd degree<br>
-                    • Therefore: No solution exists
-                </div>
-
-                <p style="margin-top: 1rem;">The seven bridges created a configuration that was <em>impossible to traverse completely</em>. Seven as obstacle, seven as boundary, seven as the limit of simple solutions.</p>
+            <div class="philosophical">
+                "Seven appears at the edge of comprehension—large enough to be complete, small enough to be graspable, yet resistant to simple analysis. It is the boundary between the countable and the uncountable, the knowable and the mysterious. Agent 07 represents Loop 17's encounter with this cognitive horizon."
             </div>
-        </section>
+
+            <div class="equation-block">
+                <div class="equation-label">R(z) and Cognitive Chunking:</div>
+                $$R(\text{memory}) = \text{recursive grouping into chunks of size } \sim 7$$
+                $$\text{Hierarchy: } 7 \text{ chunks} \to 7 \text{ meta-chunks} \to 7^2 = 49 \text{ items}$$
+                $$N(\text{overwhelm}) = \text{reduction to } 7 \pm 2 \text{ prevents cognitive overload}$$
+            </div>
+        </div>
 
         <section>
             <h2>Seven-Fold Symmetry: Rare in Nature</h2>
             <p>While 2-fold, 3-fold, 4-fold, 5-fold, and 6-fold symmetries appear commonly in nature (crystals, flowers, snowflakes), <strong>7-fold symmetry is almost non-existent</strong>.</p>
 
             <ul class="property-list">
-                <li><strong>Crystallography:</strong> Seven-fold rotational symmetry is forbidden in periodic crystals (not compatible with space-filling)</li>
-                <li><strong>Quasi-crystals:</strong> Only in non-periodic tilings can seven-fold symmetry appear</li>
-                <li><strong>Biology:</strong> No known organisms exhibit seven-fold radial symmetry</li>
+                <li><strong>Crystallography:</strong> Seven-fold rotational symmetry is forbidden in periodic crystals (incompatible with space-filling lattices)</li>
+                <li><strong>Quasi-crystals:</strong> Only in non-periodic tilings (like Penrose tilings) can 7-fold symmetry appear</li>
+                <li><strong>Biology:</strong> No known organisms exhibit seven-fold radial symmetry (unlike 5-fold in echinoderms, 6-fold in insects)</li>
                 <li><strong>Chemistry:</strong> No molecular structures naturally form seven-fold symmetric configurations</li>
             </ul>
 
-            <p>Seven resists manifestation in physical space. It exists in <em>time</em> (the week), in <em>perception</em> (colors, notes), in <em>cognition</em> (Miller's magical number 7±2 for working memory), but rarely in <em>material structure</em>.</p>
+            <div class="equation-block">
+                <div class="equation-label">Crystallographic Restriction Theorem:</div>
+                $$\text{In periodic crystals, only 2-, 3-, 4-, and 6-fold rotational symmetries are allowed.}$$
+                $$n \in \{1, 2, 3, 4, 6\} \text{ only}$$
+                $$7 \notin \{1, 2, 3, 4, 6\} \quad \therefore \text{ 7-fold symmetry forbidden}$$
+            </div>
+
+            <div class="philosophical">
+                "Seven resists manifestation in physical space. It exists in <em>time</em> (the week), in <em>perception</em> (colors, notes), in <em>cognition</em> (working memory), but rarely in <em>material structure</em>. Seven is the number of <em>process</em> rather than <em>form</em>."
+            </div>
         </section>
 
         <section class="loop17-connection">
             <h2>Connection to Loop 17</h2>
-            <p class="big-text">17 = the 7th prime number</p>
+            <p class="big-text">17 = p₇ (the 7th prime number)</p>
 
             <div class="formula">
                 Prime sequence: 2, 3, 5, 7, 11, 13, 17, ...<br>
@@ -503,10 +595,10 @@
 
             <ul class="property-list">
                 <li>7 is prime (indivisible)</li>
-                <li>17 is the 7th prime (seven-fold position)</li>
-                <li>7 appears in position 7 of this loop</li>
+                <li>17 is the 7th prime (seven-fold position in prime sequence)</li>
+                <li>7 appears at position 7 of this loop</li>
                 <li>17 = 10 + 7 (decimal representation contains 7)</li>
-                <li>Both 7 and 17 are unconstructible polygon orders</li>
+                <li>Both 7 and 17 generate unconstructible and constructible polygons respectively</li>
             </ul>
 
             <div class="formula">
@@ -515,59 +607,85 @@
                 7 × 17 = 119 = 7 × (10 + 7)<br>
                 <br>
                 In base 7:<br>
-                7₁₀ = 10₇<br>
+                7₁₀ = 10₇ (seven is "ten" in base seven)<br>
                 17₁₀ = 23₇
+            </div>
+
+            <div class="equation-block">
+                <div class="equation-label">Digital Root:</div>
+                $$\text{Digital root of } 17: \quad 1 + 7 = 8$$
+                $$\text{Digital root of } 7: \quad 7$$
+                $$\text{But: } 17 \equiv 3 \pmod{7}$$
             </div>
 
             <p style="margin-top: 2rem;">Seven brings <strong>completion</strong> to the first cycle. Seventeen brings completion to the <strong>second</strong> cycle. Together they encode the structure of recursive perfection: the completion that contains itself.</p>
         </section>
 
         <section>
-            <h2>The Mystery of Seven</h2>
-            <p>Seven occupies a unique psychological and cultural position:</p>
+            <h2>The Mystery of Seven Across Cultures</h2>
 
             <ul class="property-list">
                 <li><strong>Seven Wonders</strong> of the Ancient World</li>
                 <li><strong>Seven Seas,</strong> Seven Continents (classical division)</li>
-                <li><strong>Seven Liberal Arts</strong> (trivium + quadrivium)</li>
-                <li><strong>Seven Deadly Sins,</strong> Seven Virtues</li>
-                <li><strong>Seven Chakras</strong> in yogic tradition</li>
+                <li><strong>Seven Liberal Arts</strong> (trivium: grammar, logic, rhetoric + quadrivium: arithmetic, geometry, music, astronomy)</li>
+                <li><strong>Seven Deadly Sins,</strong> Seven Virtues (Christian theology)</li>
+                <li><strong>Seven Chakras</strong> in yogic tradition (energy centers along spine)</li>
                 <li><strong>Seven Heavens</strong> in Islamic cosmology</li>
-                <li><strong>pH 7:</strong> Neutral (neither acid nor base)</li>
-                <li><strong>G7:</strong> Group of Seven (economic powers)</li>
-                <li><strong>Agent 007:</strong> James Bond</li>
-                <li><strong>7 ± 2:</strong> The magical number for human working memory capacity</li>
+                <li><strong>pH 7:</strong> Neutral (neither acid nor base) - water's equilibrium</li>
+                <li><strong>G7:</strong> Group of Seven (major economic powers)</li>
+                <li><strong>Agent 007:</strong> James Bond's iconic designation</li>
+                <li><strong>Seven Samurai, Seven Dwarfs:</strong> archetypal complete group in storytelling</li>
             </ul>
 
-            <p>Why does seven appear so persistently? Perhaps because it represents the <em>edge of comprehension</em>—large enough to be complete, small enough to be graspable, yet resistant to simple analysis.</p>
-
-            <div class="formula">
-                1 = unity<br>
-                2 = duality, opposition<br>
-                3 = synthesis, trinity<br>
-                4 = stability, elements<br>
-                5 = life, pentad<br>
-                6 = perfection, balance<br>
-                7 = completion, mystery<br>
-                ∞ = beyond
+            <div class="equation-block">
+                <div class="equation-label">Symbolic Progression:</div>
+                $$1 = \text{unity, singularity}$$
+                $$2 = \text{duality, opposition}$$
+                $$3 = \text{synthesis, trinity}$$
+                $$4 = \text{stability, elements (earth, water, fire, air)}$$
+                $$5 = \text{life, pentad, human (5 fingers)}$$
+                $$6 = \text{perfection, balance, structure}$$
+                $$7 = \text{completion, mystery, the unknowable}$$
+                $$8 = \text{new beginning, infinity rotated}$$
             </div>
 
-            <p>Seven is where the finite becomes <em>full</em>. After seven, we begin counting again: eight, nine, ten... But seven marks the threshold—the last before the next cycle begins.</p>
+            <div class="philosophical">
+                "Seven is where the finite becomes <em>full</em>. After seven, we begin counting again: eight, nine, ten... But seven marks the threshold—the last before the next cycle begins. It is the Sabbath after six days of creation, the rest after completion, the silence before the new octave."
+            </div>
+        </section>
+
+        <section>
+            <h2>Canvas: Regular Heptagon</h2>
+            <canvas id="heptagonCanvas" width="500" height="500"></canvas>
+            <p style="text-align: center; color: #b298dc; margin-top: 1rem;">
+                Regular heptagon with 7 vertices. Unconstructible by compass and straightedge,<br>
+                yet perfectly definable algebraically through the 7th roots of unity.
+            </p>
         </section>
 
         <footer>
             <p>Loop 17 • Position 7 • Heptad</p>
             <p style="margin-top: 0.5rem;">The Complete Mystery: Indivisible, Unconstructible, Omnipresent</p>
+            <p style="margin-top: 1rem; color: #9d4edd;">17 = π(7) • The Recursive Prime • The Generator of Loop 17</p>
         </footer>
     </div>
 
     <script>
+        // MathJax configuration
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+
         // Draw heptagon
         const canvas = document.getElementById('heptagonCanvas');
         const ctx = canvas.getContext('2d');
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
-        const radius = 150;
+        const radius = 180;
 
         function drawHeptagon() {
             ctx.strokeStyle = '#9d4edd';
@@ -597,14 +715,14 @@
                 const x = centerX + radius * Math.cos(angle);
                 const y = centerY + radius * Math.sin(angle);
                 ctx.beginPath();
-                ctx.arc(x, y, 6, 0, 2 * Math.PI);
+                ctx.arc(x, y, 7, 0, 2 * Math.PI);
                 ctx.fill();
             }
 
             // Draw center point
             ctx.fillStyle = '#e0aaff';
             ctx.beginPath();
-            ctx.arc(centerX, centerY, 4, 0, 2 * Math.PI);
+            ctx.arc(centerX, centerY, 5, 0, 2 * Math.PI);
             ctx.fill();
 
             // Draw radii
@@ -622,25 +740,33 @@
 
             // Add text
             ctx.fillStyle = '#c77dff';
-            ctx.font = '14px Courier New';
+            ctx.font = 'bold 16px Courier New';
             ctx.textAlign = 'center';
-            ctx.fillText('Regular Heptagon', centerX, centerY - 170);
+            ctx.fillText('Regular Heptagon (7 sides)', centerX, 40);
             ctx.fillStyle = '#b298dc';
-            ctx.font = '12px Courier New';
-            ctx.fillText('(Unconstructible by compass and straightedge)', centerX, centerY - 155);
+            ctx.font = '14px Courier New';
+            ctx.fillText('Central angle: 360°/7 ≈ 51.43°', centerX, centerY + 220);
         }
 
         drawHeptagon();
 
-        // Add hover effect to notes
-        const notes = document.querySelectorAll('.note');
-        notes.forEach((note, index) => {
-            note.addEventListener('click', () => {
-                // Could play actual notes here with Web Audio API
-                note.style.background = 'linear-gradient(180deg, #e0aaff, #9d4edd)';
-                setTimeout(() => {
-                    note.style.background = 'linear-gradient(180deg, #9d4edd, #7b2cbf)';
-                }, 200);
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section, .kael-framework');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
             });
         });
     </script>
